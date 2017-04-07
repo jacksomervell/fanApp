@@ -1,0 +1,14 @@
+.ajax-loader{
+	background-image: url('https://media.giphy.com/media/Oab4PXZpIoG76/giphy.gif');
+	height:100px;
+	background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;   
+    width:100px;
+
+}
+
+.container{
+	width:500px;
+	height:500px;
+}
