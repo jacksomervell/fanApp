@@ -1,4 +1,8 @@
 
+var thePlayersTotalScores = [];
+ 			var totalScoresIndex = 0;
+ 			var thePlayers = [1, 2,30,49,50,60,70, 9, 8, 1, 5, 6]
+
 $(document).ready(function(){
 
 	function countInArray(array, what) {
@@ -10,9 +14,13 @@ $(document).ready(function(){
     }
     return count;
 	}
+
+
 	
 
 	$(".what-if").click(function(){
+
+
 
     	$('.container').append("<div class = 'ajax-loader'></div>");
   	
@@ -143,12 +151,11 @@ $(document).ready(function(){
  				{
 
 
-		 			$.ajax({url: "https://fantasy.premierleague.com/drf/element-summary/" + thePlayers[i], cache: false, async:false})
+		 			$.ajax({url: "https://fantasy.premierleague.com/drf/element-summary/" + thePlayers[i], async:false})
 		 			 .done(function(result){
+ 		
 
 	//add every point up for each week
-
-							console.log(result)
 
 							var thisPlayersScores = []
 							
@@ -167,6 +174,10 @@ $(document).ready(function(){
 	 				
  				})(i);	
  			}
+ 		
+
+ 			console.log(thePlayersTotalScores)
+ 	
 
 
      //now calculate how many subs points wouldve been contributed:
@@ -337,11 +348,11 @@ $(document).ready(function(){
 
  			var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
 
- 			console.log(subScores);
+ 			// console.log(subScores);
 
  			var fieldedPlayersScore = thePlayersTotalScores.reduce(function(a, b) { return a + b; }, 0);
 
- 			console.log(fieldedPlayersScore);
+ 			// console.log(fieldedPlayersScore);
 
  			var totalScore = subScores + fieldedPlayersScore; 
 
