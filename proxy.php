@@ -94,34 +94,34 @@ print($request_url);
 
 $p_request_url = parse_url($request_url);
 // csurl may exist in GET request methods
-if (is_array($request_params) && array_key_exists('csurl', $request_params)) {
-    unset($request_params['csurl']);
-}
-// ignore requests for proxy :)
-if (preg_match('!' . $_SERVER['SCRIPT_NAME'] . '!', $request_url) || empty($request_url) || count($p_request_url) == 1) {
-    csajax_debug_message('Invalid request - make sure that csurl variable is not empty');
-    exit;
-}
-// check against valid requests
-if (CSAJAX_FILTERS) {
-    $parsed = $p_request_url;
-    if (CSAJAX_FILTER_DOMAIN) {
-        if (!in_array($parsed['host'], $valid_requests)) {
-            csajax_debug_message('Invalid domain - ' . $parsed['host'] . ' does not included in valid requests');
-            exit;
-        }
-    } else {
-        $check_url = isset($parsed['scheme']) ? $parsed['scheme'] . '://' : '';
-        $check_url .= isset($parsed['user']) ? $parsed['user'] . ($parsed['pass'] ? ':' . $parsed['pass'] : '') . '@' : '';
-        $check_url .= isset($parsed['host']) ? $parsed['host'] : '';
-        $check_url .= isset($parsed['port']) ? ':' . $parsed['port'] : '';
-        $check_url .= isset($parsed['path']) ? $parsed['path'] : '';
-        if (!in_array($check_url, $valid_requests)) {
-            csajax_debug_message('Invalid domain - ' . $request_url . ' does not included in valid requests');
-            exit;
-        }
-    }
-}
+// if (is_array($request_params) && array_key_exists('csurl', $request_params)) {
+//     unset($request_params['csurl']);
+// }
+// // ignore requests for proxy :)
+// if (preg_match('!' . $_SERVER['SCRIPT_NAME'] . '!', $request_url) || empty($request_url) || count($p_request_url) == 1) {
+//     csajax_debug_message('Invalid request - make sure that csurl variable is not empty');
+//     exit;
+// }
+// // check against valid requests
+// if (CSAJAX_FILTERS) {
+//     $parsed = $p_request_url;
+//     if (CSAJAX_FILTER_DOMAIN) {
+//         if (!in_array($parsed['host'], $valid_requests)) {
+//             csajax_debug_message('Invalid domain - ' . $parsed['host'] . ' does not included in valid requests');
+//             exit;
+//         }
+//     } else {
+//         $check_url = isset($parsed['scheme']) ? $parsed['scheme'] . '://' : '';
+//         $check_url .= isset($parsed['user']) ? $parsed['user'] . ($parsed['pass'] ? ':' . $parsed['pass'] : '') . '@' : '';
+//         $check_url .= isset($parsed['host']) ? $parsed['host'] : '';
+//         $check_url .= isset($parsed['port']) ? ':' . $parsed['port'] : '';
+//         $check_url .= isset($parsed['path']) ? $parsed['path'] : '';
+//         if (!in_array($check_url, $valid_requests)) {
+//             csajax_debug_message('Invalid domain - ' . $request_url . ' does not included in valid requests');
+//             exit;
+//         }
+//     }
+// }
 // append query string for GET requests
 // if ($request_method == 'GET' && count($request_params) > 0 && (!array_key_exists('query', $p_request_url) || empty($p_request_url['query']))) {
 //     $request_url .= '?' . http_build_query($request_params);
