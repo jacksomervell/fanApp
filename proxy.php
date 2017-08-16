@@ -60,7 +60,7 @@ foreach ($_SERVER as $key => $value) {
     }
 }
 
-print($_SERVER);
+print($_SERVER['REQUEST_METHOD']);
 exit;
 // identify request method, url and params
 $request_method = $_SERVER['REQUEST_METHOD'];
