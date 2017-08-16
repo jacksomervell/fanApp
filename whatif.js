@@ -42,7 +42,7 @@ $(document).ready(function(){
 			$('.warning').slideUp();
 
 	    $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, success: function(result){
-	    	console.log(result);
+	    	//console.log(result);
 	    	var thePlayers = [];
 	    	var playerScores = result.picks;
 			 var points = [];
@@ -183,7 +183,7 @@ $(document).ready(function(){
  			}
  		
 
- 			console.log(thePlayersTotalScores)
+ 			//console.log(thePlayersTotalScores)
  	
 
 
@@ -355,11 +355,11 @@ $(document).ready(function(){
 
  			var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
 
- 			// console.log(subScores);
+ 			 console.log(subScores);
 
  			var fieldedPlayersScore = thePlayersTotalScores.reduce(function(a, b) { return a + b; }, 0);
 
- 			// console.log(fieldedPlayersScore);
+ 			 console.log(fieldedPlayersScore);
 
  			var totalScore = subScores + fieldedPlayersScore; 
 
