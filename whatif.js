@@ -42,7 +42,7 @@ $(document).ready(function(){
 			$('.warning').slideUp();
 
 	    $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, success: function(result){
-	    	//console.log(result);
+	    	console.log(result);
 	    	var thePlayers = [];
 	    	var playerScores = result.picks;
 			 var points = [];
@@ -160,7 +160,7 @@ $(document).ready(function(){
 
 		 			$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + thePlayers[i], async:false}})
 		 			 .done(function(result){
- 		
+ 						console.log('2' + result);
 
 	//add every point up for each week
 
@@ -217,6 +217,7 @@ $(document).ready(function(){
 
 		 			 		var playerPos = i;
 		 			 		var playerNum = thePlayers[i]
+		 			 		console.log('3' + result);
 		 			 		
 
 		 			 		//these are for if subs have been used. If this sub is used, add it to the array. Checks the array each time loops.
@@ -235,6 +236,8 @@ $(document).ready(function(){
 							 			$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}, async:false})
 							 			 .done(function(result){
 
+							 			 	console.log('4' + result);
+
 							 			 	var addPoints = result.history[i].total_points
 							 			 	theSubsScoresToAdd[subScoresIndex] = addPoints;
 		 									subScoresIndex++;
@@ -252,6 +255,7 @@ $(document).ready(function(){
 
 							 			$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}, async:false})
 							 			 .done(function(result){
+							 			 	console.log('5' + result);
 							 			 	// if(countInArray(gameWeeksWithSubs, i) > 2){ return}
 							 			 	var addPoints = result.history[i].total_points
 							 			 	theSubsScoresToAdd[subScoresIndex] = addPoints;
@@ -266,7 +270,7 @@ $(document).ready(function(){
 
 							 			$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[1]}, async:false})
 							 			 .done(function(result){
-
+							 			 		console.log('6' + result);
 							 			 		if(!result.history[i]){
 							 			 		return;
 							 			 		}
@@ -276,7 +280,7 @@ $(document).ready(function(){
 
 							 								$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[2]}, async:false})
 							 			 					.done(function(result){
-
+							 			 						console.log('7' + result);
 							 			 						if(!result.history[i]){
 												 			 		return;
 												 			 		}
@@ -286,7 +290,7 @@ $(document).ready(function(){
 
 										 								$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[3]}, async:false})
 										 			 					.done(function(result){
-
+										 			 						console.log('8' + result);
 										 			 						if(!result.history[i]){
 															 			 		return;
 															 			 		}
@@ -355,11 +359,11 @@ $(document).ready(function(){
 
  			var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
 
- 			 console.log(subScores);
+ 			 //console.log(subScores);
 
  			var fieldedPlayersScore = thePlayersTotalScores.reduce(function(a, b) { return a + b; }, 0);
 
- 			 console.log(fieldedPlayersScore);
+ 			 //console.log(fieldedPlayersScore);
 
  			var totalScore = subScores + fieldedPlayersScore; 
 
