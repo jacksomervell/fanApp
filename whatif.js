@@ -41,7 +41,7 @@ $(document).ready(function(){
 
 			$('.warning').slideUp();
 
-	    $.ajax({url:'proxy.php', data:{url: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, success: function(result){
+	    $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, success: function(result){
 	    	console.log(result);
 	    	var thePlayers = [];
 	    	var playerScores = result.picks;
