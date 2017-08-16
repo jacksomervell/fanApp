@@ -1,7 +1,6 @@
 <?php
 
-print('hello');
-exit;
+
 /**
  * AJAX Cross Domain (PHP) Proxy 0.8
  * Copyright (C) 2016 Iacovos Constantinou (https://github.com/softius)
@@ -61,6 +60,8 @@ foreach ($_SERVER as $key => $value) {
     }
 }
 
+print($_SERVER);
+exit;
 // identify request method, url and params
 $request_method = $_SERVER['REQUEST_METHOD'];
 if ('GET' == $request_method) {
