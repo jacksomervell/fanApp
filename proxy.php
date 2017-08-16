@@ -90,6 +90,8 @@ if (isset($_REQUEST['csurl'])) {
     exit;
 }
 
+print($request_url);
+
 $p_request_url = parse_url($request_url);
 // csurl may exist in GET request methods
 if (is_array($request_params) && array_key_exists('csurl', $request_params)) {
