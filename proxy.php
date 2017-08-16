@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * AJAX Cross Domain (PHP) Proxy 0.8
  * Copyright (C) 2016 Iacovos Constantinou (https://github.com/softius)
@@ -35,7 +33,7 @@ define('CSAJAX_DEBUG', false);
  * A set of valid cross domain requests
  */
 $valid_requests = array(
-    'http://whatiff.herokuapp.com',
+    // 'example.com'
 );
 /**
  * Set extra multiple options for cURL
@@ -59,8 +57,6 @@ foreach ($_SERVER as $key => $value) {
         }
     }
 }
-
-
 // identify request method, url and params
 $request_method = $_SERVER['REQUEST_METHOD'];
 if ('GET' == $request_method) {
@@ -89,14 +85,11 @@ if (isset($_REQUEST['csurl'])) {
     $_SERVER['REDIRECT_STATUS'] = 404;
     exit;
 }
-
-print($request_url);
-
-// $p_request_url = parse_url($request_url);
+$p_request_url = parse_url($request_url);
 // csurl may exist in GET request methods
-// if (is_array($request_params) && array_key_exists('csurl', $request_params)) {
-//     unset($request_params['csurl']);
-// }
+if (is_array($request_params) && array_key_exists('csurl', $request_params)) {
+    unset($request_params['csurl']);
+}
 // // ignore requests for proxy :)
 // if (preg_match('!' . $_SERVER['SCRIPT_NAME'] . '!', $request_url) || empty($request_url) || count($p_request_url) == 1) {
 //     csajax_debug_message('Invalid request - make sure that csurl variable is not empty');
@@ -122,11 +115,10 @@ print($request_url);
 //         }
 //     }
 // }
-//append query string for GET requests
+// append query string for GET requests
 if ($request_method == 'GET' && count($request_params) > 0 && (!array_key_exists('query', $p_request_url) || empty($p_request_url['query']))) {
     $request_url .= '?' . http_build_query($request_params);
 }
-
 // let the request begin
 $ch = curl_init($request_url);
 curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);   // (re-)send headers
@@ -148,7 +140,6 @@ if (is_array($curl_options) && 0 <= count($curl_options)) {
 // retrieve response (headers and content)
 $response = curl_exec($ch);
 curl_close($ch);
-
 // split response to header and content
 list($response_headers, $response_content) = preg_split('/(\r\n){2}/', $response, 2);
 // (re-)send the headers
@@ -164,8 +155,7 @@ foreach ($response_headers as $key => $response_header) {
     }
 }
 // finally, output the content
-print($response);
-exit;
+print($response_content);
 function csajax_debug_message($message)
 {
     if (true == CSAJAX_DEBUG) {
