@@ -359,11 +359,11 @@ $(document).ready(function(){
 
  			var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
 
- 			 console.log(theSubScoresToAdd);
+ 			 //console.log(theSubScoresToAdd);
 
  			var fieldedPlayersScore = thePlayersTotalScores.reduce(function(a, b) { return a + b; }, 0);
 
- 			 console.log(thePlayersTotalScores);
+ 			 //console.log(thePlayersTotalScores);
 
  			var totalScore = subScores + fieldedPlayersScore; 
 
