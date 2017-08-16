@@ -355,7 +355,7 @@ $(document).ready(function(){
 	 				
  				})(i);	
  			}
- 			
+
  			console.log(thePlayersTotalScores);
 
 
@@ -373,7 +373,9 @@ $(document).ready(function(){
 
 	    }, complete: function(){
 	   	 // $('.ajax-loader').css("visibility", "hidden");
-  		}});
+  		}
+
+  	});
 
 
 	}); 

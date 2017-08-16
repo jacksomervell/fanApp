@@ -33,8 +33,7 @@ define('CSAJAX_DEBUG', false);
  * A set of valid cross domain requests
  */
 $valid_requests = array(
-    // 'example.com'
-);
+'*',);
 /**
  * Set extra multiple options for cURL
  * Could be used to define CURLOPT_SSL_VERIFYPEER & CURLOPT_SSL_VERIFYHOST for HTTPS
