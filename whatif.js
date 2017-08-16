@@ -43,7 +43,6 @@ $(document).ready(function(){
 
 	    $.ajax({url:'proxy.php', data:{url: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, success: function(result){
 	    	console.log(result);
-	    	return;
 	    	var thePlayers = [];
 	    	var playerScores = result.picks;
 			 var points = [];
