@@ -122,10 +122,10 @@ $p_request_url = parse_url($request_url);
 //         }
 //     }
 // }
-// append query string for GET requests
-// if ($request_method == 'GET' && count($request_params) > 0 && (!array_key_exists('query', $p_request_url) || empty($p_request_url['query']))) {
-//     $request_url .= '?' . http_build_query($request_params);
-// }
+//append query string for GET requests
+if ($request_method == 'GET' && count($request_params) > 0 && (!array_key_exists('query', $p_request_url) || empty($p_request_url['query']))) {
+    $request_url .= '?' . http_build_query($request_params);
+}
 
 print('request' . $request_url);
 // let the request begin
