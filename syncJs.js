@@ -2,6 +2,9 @@
 var thePlayersTotalScores = [];
       var totalScoresIndex = 0;
       var thePlayers = [1, 2,30,49,50,60,70, 9, 8, 1, 5, 6]
+      var playerScores = [];
+      var thePlayersTotalScores = [];
+
 
 $(document).ready(function(){
 
@@ -39,92 +42,83 @@ $(document).ready(function(){
         return;
       }
 
-      $('.warning').slideUp();
+      $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', 
+                        data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, 
+                        success: function(result){
+                          
+                          thePlayers = [];
+                          playerScores = result.picks;
+                           var points = [];
+                           var teamName = result.entry.name;
+                           var formation = [];
+                           var viceCaptain;
+                           var captain;
+                //set cap
 
-      $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, success: function(result){
-        var thePlayers = [];
-        var playerScores = result.picks;
-         var points = [];
-         var teamName = result.entry.name;
-         var formation = [];
-         var viceCaptain;
-         var captain;
-//set cap
+                    for (i=0; i<14; i++){
+                        if (playerScores[i].is_captain == true){
+                          captain = playerScores[i].element;
+                          }
+                      }
 
-    for (i=0; i<14; i++){
-        if (playerScores[i].is_captain == true){
-          captain = playerScores[i].element;
-          }
-      }
+                //set viceCap 
 
-//set viceCap 
+                    for (i=0; i<14; i++){
+                      if (playerScores[i].is_vice_captain == true){
+                        viceCaptain = playerScores[i].element;
+                        }
+                    }
+             
 
-    for (i=0; i<14; i++){
-      if (playerScores[i].is_vice_captain == true){
-        viceCaptain = playerScores[i].element;
-        }
-    }
-       
+      //get the team. thePlayers array is the set of players to calculate total scores for
 
-//get the team. thePlayers array is the set of players to calculate total scores for
+                for (i=0; i < 15; i++){
+                  thePlayers.push(playerScores[i].element)
 
-        for (i=0; i < 15; i++){
-          thePlayers.push(playerScores[i].element)
+              //push the id in twice if it's captain
+                  if (playerScores[i].is_captain == true){
+                    thePlayers.push(playerScores[i].element)
+                      }
+                }
 
-      //push the id in twice if it's captain
-          if (playerScores[i].is_captain == true){
-            thePlayers.push(playerScores[i].element)
-          }
-        }
+            }
+    }).done(function(){
 
-      }
-    })
+        var fish = $.each(thePlayers, function(i, val){
 
+          var scoresAddedForOnePlayer
+         
+            $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + val,}})
+           .done(function(result){
+
+              //add every point up for each week
+
+              var thisPlayersScores = []
+          
+              for(i=0; i<result.history.length; i++){
+                thisPlayersScores.push(result.history[i].total_points)
+              }
+              
+              //save all the player sscores into arra
+
+              scoresAddedForOnePlayer = (thisPlayersScores.reduce(function(a, b) { return a + b; }, 0));
+              thePlayersTotalScores.push(scoresAddedForOnePlayer);
+          })
+        })
+
+        $(document).ajaxStop(function () {
+           console.log(thePlayersTotalScores)})
+        });
+
+//end of click action
   })
 
-    console.log(thePlayers)
+    
 })
     
 
 
- // //get the scores for each player
 
- //      var thePlayersTotalScores = [];
- //      var totalScoresIndex = 0;
-
-
-  //     for (i=0; i < 12; i++){
-
-  //       (function(i)
-  //       {
-
-
-  //         $.ajax({url:'whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + thePlayers[i], async:false}})
-  //          .done(function(result){
-  //           console.log('2' + result);
-
-  // //add every point up for each week
-
-  //             var thisPlayersScores = []
-              
-  //             for(i=0; i<result.history.length; i++){
-  //               thisPlayersScores.push(result.history[i].total_points)
-  //             }
-  //    //save all the player sscores into arra
-
-  //             var scoresAddedForOnePlayer = (thisPlayersScores.reduce(function(a, b) { return a + b; }, 0));
-
-  //             thePlayersTotalScores[totalScoresIndex] = scoresAddedForOnePlayer;
-  //             totalScoresIndex++;
-
-  //         })
-
-          
-  //       })(i);  
-  //     }
-    
-
-  //     //console.log(thePlayersTotalScores)
   
 
 
