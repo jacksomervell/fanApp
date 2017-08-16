@@ -90,8 +90,6 @@ if (isset($_REQUEST['csurl'])) {
     exit;
 }
 
-print($_REQUEST['csurl']);
-exit;
 $p_request_url = parse_url($request_url);
 // csurl may exist in GET request methods
 if (is_array($request_params) && array_key_exists('csurl', $request_params)) {
@@ -163,6 +161,7 @@ foreach ($response_headers as $key => $response_header) {
 }
 // finally, output the content
 print($response_content);
+exit;
 function csajax_debug_message($message)
 {
     if (true == CSAJAX_DEBUG) {
