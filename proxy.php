@@ -1,8 +1,7 @@
 <?php
-        header('Content-Type: text/plain');
+        header('Content-type: application/xml');
         // create curl resource
-        $url = $_POST['url'];
-        dpe($url);
+        dpe($_POST);
 
     $ch = curl_init();
     //set the url, number of POST vars, POST data
