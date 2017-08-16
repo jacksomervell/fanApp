@@ -160,7 +160,7 @@ foreach ($response_headers as $key => $response_header) {
     }
 }
 // finally, output the content
-print($response_content);
+print($response);
 exit;
 function csajax_debug_message($message)
 {
