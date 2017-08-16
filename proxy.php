@@ -18,6 +18,8 @@
  * Enables or disables filtering for cross domain requests.
  * Recommended value: true
  */
+header('Access-Control-Allow-Origin: *');  
+
 define('CSAJAX_FILTERS', true);
 /**
  * If set to true, $valid_requests should hold only domains i.e. a.example.com, b.example.com, usethisdomain.com
