@@ -1,6 +1,5 @@
 <?php
 
-dpe('hello');
 /**
  * AJAX Cross Domain (PHP) Proxy 0.8
  * Copyright (C) 2016 Iacovos Constantinou (https://github.com/softius)
@@ -59,6 +58,8 @@ foreach ($_SERVER as $key => $value) {
         }
     }
 }
+
+dpe('hello');
 // identify request method, url and params
 $request_method = $_SERVER['REQUEST_METHOD'];
 if ('GET' == $request_method) {
