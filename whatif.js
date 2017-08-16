@@ -212,7 +212,7 @@ $(document).ready(function(){
  				(function(i)
  				{
 
-		 			$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + thePlayers[i]}, cache: false, async:false})
+		 			$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + thePlayers[i]}, async:false})
 		 			 .done(function(result){
 
 		 			 		var playerPos = i;
@@ -232,7 +232,7 @@ $(document).ready(function(){
 							if((result.history[i].minutes == 0)&&(playerNum == captain)){
 								(function(){
 
-							 			$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}, cache: false, async:false})
+							 			$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}, async:false})
 							 			 .done(function(result){
 
 							 			 	var addPoints = result.history[i].total_points
@@ -250,7 +250,7 @@ $(document).ready(function(){
 									if (playerPos == 0){
 										(function(){
 
-							 			$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}, cache: false, async:false})
+							 			$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}, async:false})
 							 			 .done(function(result){
 							 			 	// if(countInArray(gameWeeksWithSubs, i) > 2){ return}
 							 			 	var addPoints = result.history[i].total_points
@@ -264,7 +264,7 @@ $(document).ready(function(){
 									if (playerPos > 0){
 										(function(){
 
-							 			$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[1]}, cache: false, async:false})
+							 			$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[1]}, async:false})
 							 			 .done(function(result){
 
 							 			 		if(!result.history[i]){
@@ -274,7 +274,7 @@ $(document).ready(function(){
 								 			 	if ((result.history[i].minutes == 0) || (countInArray(subsUsedInGameWeek, (subs[1] + i)) > 0)){
 								 			 			(function(){
 
-							 								$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[2]}, cache: false, async:false})
+							 								$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[2]}, async:false})
 							 			 					.done(function(result){
 
 							 			 						if(!result.history[i]){
@@ -284,7 +284,7 @@ $(document).ready(function(){
 							 			 						if ((result.history[i].minutes == 0) || (countInArray(subsUsedInGameWeek, (subs[2] + i)) > 0)){
 								 			 						(function(){
 
-										 								$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[3]}, cache: false, async:false})
+										 								$.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[3]}, async:false})
 										 			 					.done(function(result){
 
 										 			 						if(!result.history[i]){
