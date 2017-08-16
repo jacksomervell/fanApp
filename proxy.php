@@ -123,9 +123,9 @@ if (CSAJAX_FILTERS) {
     }
 }
 // append query string for GET requests
-if ($request_method == 'GET' && count($request_params) > 0 && (!array_key_exists('query', $p_request_url) || empty($p_request_url['query']))) {
-    $request_url .= '?' . http_build_query($request_params);
-}
+// if ($request_method == 'GET' && count($request_params) > 0 && (!array_key_exists('query', $p_request_url) || empty($p_request_url['query']))) {
+//     $request_url .= '?' . http_build_query($request_params);
+// }
 
 print('request' . $request_url);
 // let the request begin
