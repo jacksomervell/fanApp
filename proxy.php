@@ -1,4 +1,6 @@
 <?php
+
+dpe('hello');
 /**
  * AJAX Cross Domain (PHP) Proxy 0.8
  * Copyright (C) 2016 Iacovos Constantinou (https://github.com/softius)
@@ -33,7 +35,7 @@ define('CSAJAX_DEBUG', false);
  * A set of valid cross domain requests
  */
 $valid_requests = array(
-    // 'example.com'
+    'http://whatiff.herokuapp.com',
 );
 /**
  * Set extra multiple options for cURL
