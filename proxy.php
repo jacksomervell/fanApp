@@ -92,7 +92,7 @@ if (isset($_REQUEST['csurl'])) {
 
 print($request_url);
 
-$p_request_url = parse_url($request_url);
+// $p_request_url = parse_url($request_url);
 // csurl may exist in GET request methods
 // if (is_array($request_params) && array_key_exists('csurl', $request_params)) {
 //     unset($request_params['csurl']);
@@ -123,11 +123,10 @@ $p_request_url = parse_url($request_url);
 //     }
 // }
 //append query string for GET requests
-if ($request_method == 'GET' && count($request_params) > 0 && (!array_key_exists('query', $p_request_url) || empty($p_request_url['query']))) {
-    $request_url .= '?' . http_build_query($request_params);
-}
+// if ($request_method == 'GET' && count($request_params) > 0 && (!array_key_exists('query', $p_request_url) || empty($p_request_url['query']))) {
+//     $request_url .= '?' . http_build_query($request_params);
+// }
 
-print('request' . $request_url);
 // let the request begin
 $ch = curl_init($request_url);
 curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);   // (re-)send headers
@@ -150,7 +149,6 @@ if (is_array($curl_options) && 0 <= count($curl_options)) {
 $response = curl_exec($ch);
 curl_close($ch);
 
-print('response:' . $response);
 // split response to header and content
 list($response_headers, $response_content) = preg_split('/(\r\n){2}/', $response, 2);
 // (re-)send the headers
