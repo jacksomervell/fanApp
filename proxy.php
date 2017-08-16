@@ -18,7 +18,6 @@
  * Enables or disables filtering for cross domain requests.
  * Recommended value: true
  */
-header('Access-Control-Allow-Origin: *');  
 
 define('CSAJAX_FILTERS', true);
 /**
@@ -35,7 +34,7 @@ define('CSAJAX_DEBUG', false);
  * A set of valid cross domain requests
  */
 $valid_requests = array(
-'*',);
+);
 /**
  * Set extra multiple options for cURL
  * Could be used to define CURLOPT_SSL_VERIFYPEER & CURLOPT_SSL_VERIFYHOST for HTTPS

@@ -1,1 +1,3 @@
-<?php header( 'Location: /whatif.html' ) ;  ?>
+<?php header( 'Location: /whatif.html' ) ;  
+
+  header('Access-Control-Allow-Origin: "*"');  ?>
