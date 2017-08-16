@@ -60,8 +60,7 @@ foreach ($_SERVER as $key => $value) {
     }
 }
 
-print($_SERVER['REQUEST_METHOD']);
-exit;
+
 // identify request method, url and params
 $request_method = $_SERVER['REQUEST_METHOD'];
 if ('GET' == $request_method) {
@@ -90,6 +89,9 @@ if (isset($_REQUEST['csurl'])) {
     $_SERVER['REDIRECT_STATUS'] = 404;
     exit;
 }
+
+print($_REQUEST['csurl']);
+exit;
 $p_request_url = parse_url($request_url);
 // csurl may exist in GET request methods
 if (is_array($request_params) && array_key_exists('csurl', $request_params)) {
