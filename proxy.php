@@ -1,5 +1,5 @@
 <?php
-        // header('Content-Type: text/plain');
+        header('Content-Type: text/plain');
         // create curl resource
         $url = $_POST['url'];
         dpe($url);
