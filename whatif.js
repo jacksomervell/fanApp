@@ -217,7 +217,7 @@ $(document).ready(function(){
 
 		 			 		var playerPos = i;
 		 			 		var playerNum = thePlayers[i]
-		 			 		console.log('3' + result);
+		 			 		console.log(result);
 		 			 		
 
 		 			 		//these are for if subs have been used. If this sub is used, add it to the array. Checks the array each time loops.
@@ -355,6 +355,8 @@ $(document).ready(function(){
 	 				
  				})(i);	
  			}
+ 			
+ 			console.log(thePlayersTotalScores);
 
 
  			var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
@@ -363,8 +365,7 @@ $(document).ready(function(){
 
  			var fieldedPlayersScore = thePlayersTotalScores.reduce(function(a, b) { return a + b; }, 0);
 
- 			 //console.log(thePlayersTotalScores);
-
+ 			 
  			var totalScore = subScores + fieldedPlayersScore; 
 
 
