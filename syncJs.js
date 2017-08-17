@@ -84,13 +84,16 @@ $(document).ready(function(){
             }
     }).done(function(){
 
+        var ajaxCount = 0
+
        var fish = $.each(thePlayers, function(i, val){
 
           var scoresAddedForOnePlayer
          
             $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + val,}})
            .done(function(result){
-
+              ajaxCount = ajaxCount + 1;
+              console.log(ajaxCount);
               //add every point up for each week
 
               var thisPlayersScores = []
@@ -126,19 +129,19 @@ $(document).ready(function(){
          var subsUsedInGameWeek = [];
          var subsUsed = 0;
 
-         var fish = $.each (thePlayers, function(i, val){
+         // var fish = $.each (thePlayers, function(i, val){
 
-            $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + val,}})
-           .done(function(result){
+         //    $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + val,}})
+         //   .done(function(result){
 
-              var playerPos = val;
-              var playerNum = thePlayers[val]
-              console.log(result);
+         //      var playerPos = val;
+         //      var playerNum = thePlayers[val]
+         //      console.log(result);
 
-           })
+         //   })
 
-          //end of each:
-         })
+         //  //end of each:
+         // })
 
        //end of ajaxStop:  
       })
