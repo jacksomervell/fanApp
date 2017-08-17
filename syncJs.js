@@ -84,16 +84,19 @@ $(document).ready(function(){
                       }
                 }
 
+                Array.prototype.swap = function (x,y) {
+                    var b = this[x];
+                    this[x] = this[y];
+                    this[y] = b;
+                    return this;
+                  }
+
                 if(result.automatic_subs.length > 0){
                   console.log(result.automatic_subs);
                     var sub = result.automatic_subs[0].element_in;
                     var original = result.automatic_subs[0].element_out;
 
-                    console.log([sub, original]);
-
-                    var b = sub
-                    thePlayers[sub] = thePlayers[original]
-                    thePlayers[original] = b;
+                    thePlayers.swap(sub, original);
                   }
                   console.log(thePlayers);
             }
