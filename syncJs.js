@@ -156,11 +156,11 @@ $(document).ready(function(){
 
                       $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}})
                        .done(function(result){
-                            if (result.history[i].total_points != 0){
+                            
                               var addPoints = result.history[i].total_points
                               theSubsScoresToAdd[subScoresIndex] = addPoints;
                               subScoresIndex++;
-                            }
+                            
                           })  
 
                         })
@@ -169,6 +169,8 @@ $(document).ready(function(){
 
               //end of fish:
                })
+
+
               //fake ajax to send if vice cap doesnt send to trigger below ajaxStop
                     $.ajax({
                       type: 'POST',
@@ -186,9 +188,39 @@ $(document).ready(function(){
                 $(this).unbind("ajaxStop");
 
                 console.log('made it');
-                console.log(playersWhoPlayedHistory)
-                console.log(thePlayersTotalScores)
-                console.log(theSubsScoresToAdd)
+                 //if the keeper didnt play
+
+                var fish = $.each (playersWhoPlayedHistory, function(i, val){
+
+                //console.log(val)
+                  var playerPos = val;
+                  var playerNum = thePlayers[val]
+
+   
+                  for(i=0; i<val.history.length; i++){
+
+                    console.log(val.history[i].minutes);
+
+                    if((val.history[i].minutes == 0)&&(playerPos == 0)){
+                     (function(){
+
+                        $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}})
+                         .done(function(result){
+                              
+                                var addPoints = result.history[i].total_points
+                                theSubsScoresToAdd[subScoresIndex] = addPoints;
+                                subScoresIndex++;
+                              
+                            })  
+
+                          })
+                     }
+                   }
+
+              //end of fish:
+               })
+
+
 
 
               
@@ -217,22 +249,6 @@ $(document).ready(function(){
 //                 var gameWeek = i;
               
 //           //set the vice cap as cap and add their points into the subpoint array if the cap didnt play
-
-//               if((result.history[i].minutes == 0)&&(playerNum == captain)){
-//                 (function(){
-
-//                     $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}, async:false})
-//                      .done(function(result){
-
-//                       console.log('4' + result);
-
-//                       var addPoints = result.history[i].total_points
-//                       theSubsScoresToAdd[subScoresIndex] = addPoints;
-//                       subScoresIndex++;
-//                         })  
-
-//                       })()
-//               }
 //           //if the player did not play
 //                 if(result.history[i].minutes == 0){
 
