@@ -49,7 +49,11 @@ $(document).ready(function(){
       $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', 
                         data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, 
                         success: function(result){
-                          console.log(result);
+
+                          if(result.automatic_subs){
+                            console.log(result.automatic_subs);
+                          }
+
                           thePlayers = [];
                           playerScores = result.picks;
                            var points = [];
