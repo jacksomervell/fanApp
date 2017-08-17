@@ -5,6 +5,8 @@ var thePlayersTotalScores = [];
       var playerScores = [];
       var thePlayersTotalScores = [];
       var ajaxCount = 0;
+      var viceCaptain;
+      var captain;
 
 
 $(document).ready(function(){
@@ -47,8 +49,7 @@ $(document).ready(function(){
                            var points = [];
                            var teamName = result.entry.name;
                            var formation = [];
-                           var viceCaptain;
-                           var captain;
+                           
                 //set cap
 
                     for (i=0; i<14; i++){
@@ -146,6 +147,8 @@ $(document).ready(function(){
                 console.log(val)
  
                 for(i=0; i<val.history.length; i++){
+                  
+                  console.log(val.history[i].minutes);
 
                 if((val.history[i].minutes == 0)&&(playerNum == captain)){
                  (function(){
