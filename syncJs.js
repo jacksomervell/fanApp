@@ -154,10 +154,10 @@ $(document).ready(function(){
                       $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}})
                        .done(function(result){
 
-                          console.log(val);
+                          console.log(i);
 
                               if((val.history[i].minutes == 0)&&(playerNum == captain)){
-                                var addPoints = val.history[i].total_points
+                                var addPoints = result.history[i].total_points
                                 theSubsScoresToAdd[subScoresIndex] = addPoints;
                                 subScoresIndex++;
                               }
