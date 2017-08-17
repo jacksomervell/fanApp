@@ -132,7 +132,7 @@ $(document).ready(function(){
            })
 
           //end of each:
-      })
+         })
 
          $(document).ajaxStop(function(){
           $(this).unbind("ajaxStop");
@@ -163,8 +163,6 @@ $(document).ready(function(){
                    }
                  })
 
-              //end of fish:
-               })
 
               $(document).ajaxStop(function(){
                 $(this).unbind("ajaxStop");
