@@ -88,6 +88,8 @@ $(document).ready(function(){
                     var sub = result.automatic_subs.element_in;
                     var original = result.automatic_subs.element_out
 
+                    console.log([sub, original]);
+
                     var b = sub
                     thePlayers[sub] = thePlayers[original]
                     thePlayers[original] = b;
