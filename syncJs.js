@@ -107,7 +107,7 @@ $(document).ready(function(){
         })
       })
 
-      $(document).ajaxStop(function () {
+      $(document).ajaxComplete(function () {
           
         thePlayersTotalScores = thePlayersTotalScores.slice(0, 12);
         console.log(thePlayers)
