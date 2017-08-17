@@ -293,11 +293,11 @@ $(document).ready(function(){
 
                     $(document).ajaxStop(function(){
                       $(this).unbind("ajaxStop");
-                      // console.log('made it');
-                      // console.log('subs: ' + subs)
-                      // console.log('starters scores: ' + thePlayersTotalScores);
-                      // console.log('sub scores: ' + theSubsScoresToAdd)
-                      // console.log('history of players who played: ' + playersWhoPlayedHistory)
+                      console.log('made it');
+                      console.log('subs: ' + subs)
+                      console.log('starters scores: ' + thePlayersTotalScores);
+                      console.log('sub scores: ' + theSubsScoresToAdd)
+                      console.log('history of players who played: ' + playersWhoPlayedHistory)
 
                       var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
 
