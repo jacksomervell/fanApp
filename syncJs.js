@@ -105,17 +105,177 @@ $(document).ready(function(){
               thePlayersTotalScores.push(scoresAddedForOnePlayer);
           })
         })
+      })
 
         $(document).ajaxStop(function () {
-           console.log(thePlayersTotalScores)})
-        });
+           console.log(thePlayersTotalScores)
 
-//end of click action
-  })
+         })
 
-    
+    //end of click:
+      })
 })
-    
+
+            //now calculate how many subs points wouldve been contributed:
+
+//            var subs = []
+         
+//            subs.push(thePlayers[12]);
+//            subs.push(thePlayers[13]);
+//            subs.push(thePlayers[14]);
+//            subs.push(thePlayers[15]);
+
+
+//            var theSubsScoresToAdd = [];
+//           var subScoresIndex = 0;
+
+//           var subsUsedInGameWeek = [];
+//           var subsUsed = 0;
+
+// ///where you got to yesterdayyy
+
+//           $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + thePlayers[i]}})
+//            .done(function(result){
+
+//               var playerPos = i;
+//               var playerNum = thePlayers[i]
+//               console.log(result);
+              
+
+//               //these are for if subs have been used. If this sub is used, add it to the array. Checks the array each time loops.
+              
+
+              
+//             for(i=0; i<result.history.length; i++){
+                
+//                 var gameWeek = i;
+              
+//           //set the vice cap as cap and add their points into the subpoint array if the cap didnt play
+
+//               if((result.history[i].minutes == 0)&&(playerNum == captain)){
+//                 (function(){
+
+//                     $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}, async:false})
+//                      .done(function(result){
+
+//                       console.log('4' + result);
+
+//                       var addPoints = result.history[i].total_points
+//                       theSubsScoresToAdd[subScoresIndex] = addPoints;
+//                       subScoresIndex++;
+//                         })  
+
+//                       })()
+//               }
+//           //if the player did not play
+//                 if(result.history[i].minutes == 0){
+
+
+//           //calc if keeper
+//                   if (playerPos == 0){
+//                     (function(){
+
+//                     $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}, async:false})
+//                      .done(function(result){
+//                       console.log('5' + result);
+//                       // if(countInArray(gameWeeksWithSubs, i) > 2){ return}
+//                       var addPoints = result.history[i].total_points
+//                       theSubsScoresToAdd[subScoresIndex] = addPoints;
+//                       subScoresIndex++;   
+//                         })  
+
+//                       })()
+//                   }
+//           //calc for outfield
+//                   if (playerPos > 0){
+//                     (function(){
+
+//                     $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[1]}, async:false})
+//                      .done(function(result){
+//                         console.log('6' + result);
+//                         if(!result.history[i]){
+//                         return;
+//                         }
+
+//                         if ((result.history[i].minutes == 0) || (countInArray(subsUsedInGameWeek, (subs[1] + i)) > 0)){
+//                             (function(){
+
+//                               $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[2]}, async:false})
+//                               .done(function(result){
+//                                 console.log('7' + result);
+//                                 if(!result.history[i]){
+//                                   return;
+//                                   }
+
+//                                 if ((result.history[i].minutes == 0) || (countInArray(subsUsedInGameWeek, (subs[2] + i)) > 0)){
+//                                   (function(){
+
+//                                     $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[3]}, async:false})
+//                                     .done(function(result){
+//                                       console.log('8' + result);
+//                                       if(!result.history[i]){
+//                                         return;
+//                                         }
+
+//                                       if(countInArray(subsUsedInGameWeek, (subs[3] + i)) > 0){return}
+
+//                                       subsUsedInGameWeek[subsUsed] = (subs[3] + i);
+//                                       subsUsed++
+                                      
+                                      
+//                                       // if(countInArray(gameWeeksWithSubs, i) > 2){ return}
+//                                       var addPoints = result.history[i].total_points
+//                                       theSubsScoresToAdd[subScoresIndex] = addPoints;
+//                                       subScoresIndex++;
+                                        
+                                      
+                                      
+//                                     })
+//                                   })()
+//                                 }
+//                                 else{
+
+//                                   subsUsedInGameWeek[subsUsed] = (subs[2] + i);
+//                                   subsUsed++
+                                  
+                                  
+//                                   // if(countInArray(gameWeeksWithSubs, i) > 2){ return}
+//                                   var addPoints = result.history[i].total_points
+//                                   theSubsScoresToAdd[subScoresIndex] = addPoints;
+//                                   subScoresIndex++;
+
+                                
+//                                 }
+//                               })
+//                             })()
+//                         }
+//                         else{
+
+
+//                           subsUsedInGameWeek[subsUsed] = (subs[1] + i);
+//                           subsUsed++
+                          
+                          
+//                           // if(countInArray(gameWeeksWithSubs, i) > 1){ return}
+
+//                           var addPoints = result.history[i].total_points
+//                           theSubsScoresToAdd[subScoresIndex] = addPoints;
+//                           subScoresIndex++;
+
+//                         }
+                     
+                            
+//                       })  
+
+//                     })()
+//                   }
+//                 }
+//               }
+
+//           })
+
+
+
 
 
 
@@ -147,146 +307,7 @@ $(document).ready(function(){
   //       (function(i)
   //       {
 
-  //         $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + thePlayers[i]}, async:false})
-  //          .done(function(result){
-
-  //             var playerPos = i;
-  //             var playerNum = thePlayers[i]
-  //             console.log(result);
-              
-
-  //             //these are for if subs have been used. If this sub is used, add it to the array. Checks the array each time loops.
-              
-
-              
-  //           for(i=0; i<result.history.length; i++){
-                
-  //               var gameWeek = i;
-              
-  //         //set the vice cap as cap and add their points into the subpoint array if the cap didnt play
-
-  //             if((result.history[i].minutes == 0)&&(playerNum == captain)){
-  //               (function(){
-
-  //                   $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}, async:false})
-  //                    .done(function(result){
-
-  //                     console.log('4' + result);
-
-  //                     var addPoints = result.history[i].total_points
-  //                     theSubsScoresToAdd[subScoresIndex] = addPoints;
-  //                     subScoresIndex++;
-  //                       })  
-
-  //                     })()
-  //             }
-  //         //if the player did not play
-  //               if(result.history[i].minutes == 0){
-
-
-  //         //calc if keeper
-  //                 if (playerPos == 0){
-  //                   (function(){
-
-  //                   $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}, async:false})
-  //                    .done(function(result){
-  //                     console.log('5' + result);
-  //                     // if(countInArray(gameWeeksWithSubs, i) > 2){ return}
-  //                     var addPoints = result.history[i].total_points
-  //                     theSubsScoresToAdd[subScoresIndex] = addPoints;
-  //                     subScoresIndex++;   
-  //                       })  
-
-  //                     })()
-  //                 }
-  //         //calc for outfield
-  //                 if (playerPos > 0){
-  //                   (function(){
-
-  //                   $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[1]}, async:false})
-  //                    .done(function(result){
-  //                       console.log('6' + result);
-  //                       if(!result.history[i]){
-  //                       return;
-  //                       }
-
-  //                       if ((result.history[i].minutes == 0) || (countInArray(subsUsedInGameWeek, (subs[1] + i)) > 0)){
-  //                           (function(){
-
-  //                             $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[2]}, async:false})
-  //                             .done(function(result){
-  //                               console.log('7' + result);
-  //                               if(!result.history[i]){
-  //                                 return;
-  //                                 }
-
-  //                               if ((result.history[i].minutes == 0) || (countInArray(subsUsedInGameWeek, (subs[2] + i)) > 0)){
-  //                                 (function(){
-
-  //                                   $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[3]}, async:false})
-  //                                   .done(function(result){
-  //                                     console.log('8' + result);
-  //                                     if(!result.history[i]){
-  //                                       return;
-  //                                       }
-
-  //                                     if(countInArray(subsUsedInGameWeek, (subs[3] + i)) > 0){return}
-
-  //                                     subsUsedInGameWeek[subsUsed] = (subs[3] + i);
-  //                                     subsUsed++
-                                      
-                                      
-  //                                     // if(countInArray(gameWeeksWithSubs, i) > 2){ return}
-  //                                     var addPoints = result.history[i].total_points
-  //                                     theSubsScoresToAdd[subScoresIndex] = addPoints;
-  //                                     subScoresIndex++;
-                                        
-                                      
-                                      
-  //                                   })
-  //                                 })()
-  //                               }
-  //                               else{
-
-  //                                 subsUsedInGameWeek[subsUsed] = (subs[2] + i);
-  //                                 subsUsed++
-                                  
-                                  
-  //                                 // if(countInArray(gameWeeksWithSubs, i) > 2){ return}
-  //                                 var addPoints = result.history[i].total_points
-  //                                 theSubsScoresToAdd[subScoresIndex] = addPoints;
-  //                                 subScoresIndex++;
-
-                                
-  //                               }
-  //                             })
-  //                           })()
-  //                       }
-  //                       else{
-
-
-  //                         subsUsedInGameWeek[subsUsed] = (subs[1] + i);
-  //                         subsUsed++
-                          
-                          
-  //                         // if(countInArray(gameWeeksWithSubs, i) > 1){ return}
-
-  //                         var addPoints = result.history[i].total_points
-  //                         theSubsScoresToAdd[subScoresIndex] = addPoints;
-  //                         subScoresIndex++;
-
-  //                       }
-                     
-                            
-  //                     })  
-
-  //                   })()
-  //                 }
-  //               }
-  //             }
-
-  //         })
-
+  //         
           
   //       })(i);  
   //     }
