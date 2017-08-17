@@ -110,7 +110,7 @@ $(document).ready(function(){
         })
       })
 
-      $(document).ajaxComplete(function () {
+      if (ajaxCount > 15) {
           
         thePlayersTotalScores = thePlayersTotalScores.slice(0, 12);
         console.log(thePlayers)
@@ -144,7 +144,7 @@ $(document).ready(function(){
          // })
 
        //end of ajaxStop:  
-      })
+      }
 
     //end of click:
       })
