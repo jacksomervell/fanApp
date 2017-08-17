@@ -86,8 +86,8 @@ $(document).ready(function(){
 
                 if(result.automatic_subs.length > 0){
                   console.log(result.automatic_subs);
-                    var sub = result.automatic_subs[0];
-                    var original = result.automatic_subs[1];
+                    var sub = result.automatic_subs[0].element_in;
+                    var original = result.automatic_subs[0].element_out;
 
                     console.log([sub, original]);
 
