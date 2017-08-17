@@ -129,9 +129,7 @@ $(document).ready(function(){
             $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + val,}})
            .done(function(result){
 
-              var playerPos = val;
-              var playerNum = thePlayers[val]
-              playerHistory.push(result);
+                playerHistory.push(result);
 
            })
 
@@ -145,9 +143,12 @@ $(document).ready(function(){
               var fish = $.each (playerHistory, function(i, val){
 
                 console.log(val)
+                var playerPos = val;
+                var playerNum = thePlayers[val]
+
  
                 for(i=0; i<val.history.length; i++){
-                  
+
                   console.log(val.history[i].minutes);
 
                 if((val.history[i].minutes == 0)&&(playerNum == captain)){
