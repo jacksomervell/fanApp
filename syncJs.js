@@ -145,24 +145,24 @@ $(document).ready(function(){
 
                 console.log(val)
  
-            //     for(i=0; i<val.history.length; i++){
+                for(i=0; i<val.history.length; i++){
 
-            //     if((val.history[i].minutes == 0)&&(playerNum == captain)){
-            //     (function(){
+                if((val.history[i].minutes == 0)&&(playerNum == captain)){
+                 (function(){
 
-            //         $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}})
-            //          .done(function(result){
+                    $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}})
+                     .done(function(result){
 
-            //           console.log('4' + result);
+                      console.log('4' + result);
 
-            //           var addPoints = val.history[i].total_points
-            //           theSubsScoresToAdd[subScoresIndex] = addPoints;
-            //           subScoresIndex++;
-            //             })  
+                      var addPoints = val.history[i].total_points
+                      theSubsScoresToAdd[subScoresIndex] = addPoints;
+                      subScoresIndex++;
+                        })  
 
-            //           })()
-            //   }
-            // }
+                      })
+              }
+            }
 
               //end of fish:
           })
