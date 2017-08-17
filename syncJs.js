@@ -169,13 +169,23 @@ $(document).ready(function(){
 
               //end of fish:
                })
+              //fake ajax to send if vice cap doesnt send to trigger below ajaxStop
+                    $.ajax({
+                      type: 'POST',
+                      dataType: 'json',
+                      url: '/echo/json/',
+                      data : { json: JSON.stringify( jsonData ) },
+                      success: function(data) {
+                        console.log('faked')
+                      }  
+                    });
 
-              
+
 
               $(document).ajaxStop(function(){
                 $(this).unbind("ajaxStop");
 
-
+                console.log('made it');
                 console.log(playersWhoPlayedHistory)
                 console.log(thePlayersTotalScores)
                 console.log(theSubsScoresToAdd)
