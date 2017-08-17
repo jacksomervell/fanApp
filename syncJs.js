@@ -96,6 +96,9 @@ $(document).ready(function(){
                     var sub = result.automatic_subs[0].element_in;
                     var original = result.automatic_subs[0].element_out;
 
+                    sub = thePlayers.indexOf(sub);
+                    original = thePlayers.indexOf(original);
+
                     thePlayers.swap(sub, original);
                   }
                   console.log(thePlayers);
