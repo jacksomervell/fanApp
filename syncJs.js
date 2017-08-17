@@ -1,7 +1,7 @@
 
 var thePlayersTotalScores = [];
       var totalScoresIndex = 0;
-      var thePlayers = [1, 2,30,49,50,60,70, 9, 8, 1, 5, 6]
+      var thePlayers = []
       var playerScores = [];
       var thePlayersTotalScores = [];
       var ajaxCount = 0;
@@ -30,12 +30,7 @@ $(document).ready(function(){
   
 
   $(".what-if").click(function(){
-  //  $.ajax({crossOrigin:true, url: "http://whateverorigin.org/get?url=https://fantasy.premierleague.com/drf/entry/30615/event/1", success: function(result){
-    //  console.log(result);
-    //  console.log('hello');
-    //  return;
-    // }})
-
+  
       var teamId = $('.team-id').val()
 
       if(teamId == ""){
@@ -107,11 +102,10 @@ $(document).ready(function(){
               thePlayersTotalScores.push(scoresAddedForOnePlayer);
           })
         })
-      .done(function(){
+      })
 
-        console.log(ajaxCount);
-
-      if (ajaxCount > 15) {
+      $(document).ajaxStop(function(){
+      
           
         thePlayersTotalScores = thePlayersTotalScores.slice(0, 12);
         console.log(thePlayers)
@@ -142,16 +136,12 @@ $(document).ready(function(){
          //   })
 
          //  //end of each:
-         // })
-
-      }
+      })
+      //end of click:
     })
 
+    
   })
-
-    //end of click:
-      })
-})
 
             //now calculate how many subs points wouldve been contributed:
 
