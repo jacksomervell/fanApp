@@ -110,7 +110,7 @@ $(document).ready(function(){
       $(document).ajaxStop(function () {
           
         thePlayersTotalScores = thePlayersTotalScores.slice(0, 12);
-        console.log(thePlayers);
+        console.log(thePlayers)
 
          var subs = []
        
@@ -137,7 +137,7 @@ $(document).ready(function(){
 
            })
 
-          //end of fish:
+          //end of each:
          })
 
        //end of ajaxStop:  
