@@ -4,6 +4,7 @@ var thePlayersTotalScores = [];
       var thePlayers = [1, 2,30,49,50,60,70, 9, 8, 1, 5, 6]
       var playerScores = [];
       var thePlayersTotalScores = [];
+      var ajaxCount = 0;
 
 
 $(document).ready(function(){
@@ -83,8 +84,6 @@ $(document).ready(function(){
 
             }
     }).done(function(){
-
-        var ajaxCount = 0
 
        var fish = $.each(thePlayers, function(i, val){
 
