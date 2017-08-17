@@ -186,8 +186,6 @@ $(document).ready(function(){
 
               $(document).ajaxStop(function(){
                 $(this).unbind("ajaxStop");
-
-                console.log('made it');
                  //if the keeper didnt play
 
                 var fish = $.each (playersWhoPlayedHistory, function(i, val){
@@ -225,7 +223,7 @@ $(document).ready(function(){
                     $.ajax({
                       type: 'POST',
                       dataType: 'json',
-                      url: '/echo/json/',
+                      url: '/',
                       data : { json: 'hi' },
                       success: function(data) {
                         console.log('faked')
