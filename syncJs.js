@@ -174,7 +174,7 @@ $(document).ready(function(){
                       type: 'POST',
                       dataType: 'json',
                       url: '/echo/json/',
-                      data : { json: JSON.stringify( jsonData ) },
+                      data : { json: 'hi' },
                       success: function(data) {
                         console.log('faked')
                       }  
