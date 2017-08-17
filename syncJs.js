@@ -175,7 +175,7 @@ $(document).ready(function(){
                     $.ajax({
                       type: 'POST',
                       dataType: 'json',
-                      url: '/echo/json/',
+                      url: '/',
                       data : { json: 'hi' },
                       success: function(data) {
                         console.log('faked')
@@ -233,12 +233,60 @@ $(document).ready(function(){
 
                     $(document).ajaxStop(function(){
                       $(this).unbind("ajaxStop");
+
+                      //for outfielders:
+
+                      var fish = $.each (playersWhoPlayedHistory, function(i, val){
+
+                //console.log(val)
+                          var playerPos = val;
+                          var playerNum = thePlayers[val]
+
+           
+                          for(i=0; i<val.history.length; i++){
+
+                            console.log(val.history[i].minutes);
+                            
+
+                            if((val.history[i].minutes == 0)&&(playerPos > 0)){
+                             (function(){
+
+                                $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}})
+                                 .done(function(result){
+                                      
+                                        var addPoints = result.history[i].total_points
+                                        theSubsScoresToAdd[subScoresIndex] = addPoints;
+                                        subScoresIndex++;
+                                      
+                                    })  
+
+                                  })
+                             }
+                           }
+
+              //end of fish:
+               })
+                      $.ajax({
+                      type: 'POST',
+                      dataType: 'json',
+                      url: '/',
+                      data : { json: 'hi' },
+                      success: function(data) {
+                        console.log('faked')
+                      }  
+                    });
+
+
+
+                    $(document).ajaxStop(function(){
                       console.log('made it');
                       console.log('subs: ' + subs)
                       console.log('starters scores: ' + thePlayersTotalScores);
                       console.log('sub scores: ' + theSubsScoresToAdd)
                       console.log('history of players who played: ' + playersWhoPlayedHistory)
-                    })
+                    });
+
+            })
               
           })
       
