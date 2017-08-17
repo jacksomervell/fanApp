@@ -106,8 +106,6 @@ $(document).ready(function(){
           $(this).unbind("ajaxStop");
           
         thePlayersTotalScores = thePlayersTotalScores.slice(0, 12);
-        console.log(thePlayers);
-        console.log(thePlayersTotalScores);
 
          var subs = []
        
@@ -123,6 +121,8 @@ $(document).ready(function(){
          var subsUsedInGameWeek = [];
          var subsUsed = 0;
 
+         var playerHistory = [];
+
          var fish = $.each (thePlayers, function(i, val){
 
             $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + val,}})
@@ -130,32 +130,28 @@ $(document).ready(function(){
 
               var playerPos = val;
               var playerNum = thePlayers[val]
-              console.log(result);
+              playerHistory.push(result);
 
            })
 
           //end of each:
       })
-      //end of click:
+
+         $(document).ajaxStop(function(){
+          $(this).unbind("ajaxStop");
+          console.log(playerHistory);
+        })
+      
     })
 
-    
+
+
+    //end of click:
   });
 
 });
 
-            //now calculate how many subs points wouldve been contributed:
 
-          
-
-// ///where you got to yesterdayyy
-
-//           $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + thePlayers[i]}})
-//            .done(function(result){
-
-//               var playerPos = i;
-//               var playerNum = thePlayers[i]
-//               console.log(result);
               
 
 //               //these are for if subs have been used. If this sub is used, add it to the array. Checks the array each time loops.
