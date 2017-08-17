@@ -109,6 +109,8 @@ $(document).ready(function(){
         })
       }).done(function(){
 
+        console.log(ajaxCount);
+
       if (ajaxCount > 15) {
           
         thePlayersTotalScores = thePlayersTotalScores.slice(0, 12);
