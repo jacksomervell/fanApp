@@ -200,6 +200,7 @@ $(document).ready(function(){
                   for(i=0; i<val.history.length; i++){
 
                     console.log(val.history[i].minutes);
+                    
 
                     if((val.history[i].minutes == 0)&&(playerPos == 0)){
                      (function(){
@@ -220,11 +221,27 @@ $(document).ready(function(){
               //end of fish:
                })
 
+                //fake ajax to send if vice cap doesnt send to trigger below ajaxStop
+                    $.ajax({
+                      type: 'POST',
+                      dataType: 'json',
+                      url: '/echo/json/',
+                      data : { json: 'hi' },
+                      success: function(data) {
+                        console.log('faked')
+                      }  
+                    });
 
 
-
+                    $(document).ajaxStop(function(){
+                      $(this).unbind("ajaxStop");
+                      console.log('made it');
+                      console.log('subs: ' + subs)
+                      console.log('starters scores: ' + thePlayersTotalScores);
+                      console.log('history of players who played: ' + playersWhoPlayedHistory)
+                    })
               
-              })
+          })
       
        })
 
@@ -244,30 +261,7 @@ $(document).ready(function(){
               
 
               
-//             for(i=0; i<result.history.length; i++){
-                
-//                 var gameWeek = i;
-              
-//           //set the vice cap as cap and add their points into the subpoint array if the cap didnt play
-//           //if the player did not play
-//                 if(result.history[i].minutes == 0){
-
-
-//           //calc if keeper
-//                   if (playerPos == 0){
-//                     (function(){
-
-//                     $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}, async:false})
-//                      .done(function(result){
-//                       console.log('5' + result);
-//                       // if(countInArray(gameWeeksWithSubs, i) > 2){ return}
-//                       var addPoints = result.history[i].total_points
-//                       theSubsScoresToAdd[subScoresIndex] = addPoints;
-//                       subScoresIndex++;   
-//                         })  
-
-//                       })()
-//                   }
+//             
 //           //calc for outfield
 //                   if (playerPos > 0){
 //                     (function(){
