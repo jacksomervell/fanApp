@@ -11,7 +11,8 @@ var thePlayersTotalScores = [];
      var subScoresIndex = 0;
      var subsUsedInGameWeek = [];
      var subsUsed = 0;
-     var subs = []
+     var subs = [];
+     var playersWhoPlayedHistory;
 
 
 $(document).ready(function(){
@@ -137,7 +138,7 @@ $(document).ready(function(){
           $(this).unbind("ajaxStop");
           //console.log(playerHistory);
 
-          var playersWhoPlayedHistory = playerHistory.slice(0, 12);
+          playersWhoPlayedHistory = playerHistory.slice(0, 12);
 
               var fish = $.each (playersWhoPlayedHistory, function(i, val){
 
@@ -170,7 +171,9 @@ $(document).ready(function(){
 
               $(document).ajaxStop(function(){
                 $(this).unbind("ajaxStop");
-                console.log(playerHistory)
+
+                console.log('hello');
+                console.log(playersWhoPlayedHistory)
                 console.log(thePlayersTotalScores)
                 console.log(theSubsScoresToAdd)
 
