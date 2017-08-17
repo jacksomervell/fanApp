@@ -257,9 +257,9 @@ $(document).ready(function(){
 
            
                           for(i=0; i<val.history.length; i++){
-
-                            console.log(val);
                             
+                            console.log(playerPos);
+                            console.log(val.history[i].minutes);
 
                             if((val.history[i].minutes == 0)&&(playerPos > 0)){
                              (function(){
@@ -293,11 +293,11 @@ $(document).ready(function(){
 
                     $(document).ajaxStop(function(){
                       $(this).unbind("ajaxStop");
-                      // console.log('made it');
-                      // console.log('subs: ' + subs)
-                      // console.log('starters scores: ' + thePlayersTotalScores);
-                      // console.log('sub scores: ' + theSubsScoresToAdd)
-                      // console.log('history of players who played: ' + playersWhoPlayedHistory)
+                      console.log('made it');
+                      console.log('subs: ' + subs)
+                      console.log('starters scores: ' + thePlayersTotalScores);
+                      console.log('sub scores: ' + theSubsScoresToAdd)
+                      console.log('players: ' thePlayers)
 
                       var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
 
