@@ -160,7 +160,7 @@ $(document).ready(function(){
 
                 //console.log(val)
                 var playerPos = val;
-                var playerNum = thePlayers[val]
+                var playerNum = thePlayers[i]
 
  
                 for(i=0; i<val.history.length; i++){
@@ -207,8 +207,8 @@ $(document).ready(function(){
                 var fish = $.each (playersWhoPlayedHistory, function(i, val){
 
                 //console.log(val)
-                  var playerPos = val;
-                  var playerNum = thePlayers[val]
+                  var playerPos = i;
+                  var playerNum = thePlayers[i]
 
    
                   for(i=0; i<val.history.length; i++){
@@ -262,7 +262,6 @@ $(document).ready(function(){
                             console.log(val.history[i].minutes);
 
                             if((val.history[i].minutes == 0)&&(playerPos > 0)){
-                             (function(){
                                   console.log(val)
                                 $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[1]}})
                                  .done(function(result){
@@ -272,8 +271,6 @@ $(document).ready(function(){
                                         subScoresIndex++;
                                       
                                     })  
-
-                                  })
                              }
                            }
 
