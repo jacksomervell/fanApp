@@ -264,7 +264,7 @@ $(document).ready(function(){
                                  .done(function(result){
                                       console.log(i);
                                       console.log(result);
-                                        var addPoints = result.history[i].total_points
+                                        var addPoints = result.history[i-1].total_points
                                         theSubsScoresToAdd[subScoresIndex] = addPoints;
                                         subScoresIndex++;
                                       
