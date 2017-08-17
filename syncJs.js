@@ -50,16 +50,12 @@ $(document).ready(function(){
                         data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, 
                         success: function(result){
 
-                          if(result.automatic_subs){
-                            console.log(result.automatic_subs);
-                          }
-
                           thePlayers = [];
                           playerScores = result.picks;
                            var points = [];
                            var teamName = result.entry.name;
-                           var formation = [];
                            
+
                 //set cap
 
                     for (i=0; i<14; i++){
@@ -88,6 +84,15 @@ $(document).ready(function(){
                       }
                 }
 
+                if(result.automatic_subs > 0){
+                    var sub = result.automatic_subs.element_in;
+                    var original = result.automatic_subs.element_out
+
+                    var b = sub
+                    thePlayers[sub] = thePlayers[original]
+                    thePlayers[original] = b;
+                  }
+                  console.log(thePlayers);
             }
     }).done(function(){
 
