@@ -141,7 +141,7 @@ $(document).ready(function(){
           $(this).unbind("ajaxStop");
           console.log(playerHistory);
 
-              var fish = $.each (thePlayers, function(i, val){
+              var fish = $.each (playerHistory, function(i, val){
 
                 console.log(val)
  
