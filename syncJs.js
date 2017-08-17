@@ -156,10 +156,11 @@ $(document).ready(function(){
 
                       $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}})
                        .done(function(result){
-
-                        var addPoints = val.history[i].total_points
-                        theSubsScoresToAdd[subScoresIndex] = addPoints;
-                        subScoresIndex++;
+                            if (result.history[i].total_points != 0){
+                              var addPoints = result.history[i].total_points
+                              theSubsScoresToAdd[subScoresIndex] = addPoints;
+                              subScoresIndex++;
+                            }
                           })  
 
                         })
@@ -168,6 +169,8 @@ $(document).ready(function(){
 
               //end of fish:
                })
+
+              
 
               $(document).ajaxStop(function(){
                 $(this).unbind("ajaxStop");
