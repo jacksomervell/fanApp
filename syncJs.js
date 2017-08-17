@@ -84,7 +84,7 @@ $(document).ready(function(){
             }
     }).done(function(){
 
-        var fish = $.each(thePlayers, function(i, val){
+        $.each(thePlayers, function(i, val){
 
           var scoresAddedForOnePlayer
          
@@ -107,10 +107,26 @@ $(document).ready(function(){
         })
       })
 
-        $(document).ajaxStop(function () {
-           console.log(thePlayersTotalScores)
+      $(document).ajaxStop(function () {
+          
+        console.log(thePlayersTotalScores)
 
-         })
+         var subs = []
+       
+         subs.push(thePlayers[12]);
+         subs.push(thePlayers[13]);
+         subs.push(thePlayers[14]);
+         subs.push(thePlayers[15]);
+
+
+         var theSubsScoresToAdd = [];
+         var subScoresIndex = 0;
+
+         var subsUsedInGameWeek = [];
+         var subsUsed = 0;
+
+
+      })
 
     //end of click:
       })
@@ -118,19 +134,7 @@ $(document).ready(function(){
 
             //now calculate how many subs points wouldve been contributed:
 
-//            var subs = []
-         
-//            subs.push(thePlayers[12]);
-//            subs.push(thePlayers[13]);
-//            subs.push(thePlayers[14]);
-//            subs.push(thePlayers[15]);
-
-
-//            var theSubsScoresToAdd = [];
-//           var subScoresIndex = 0;
-
-//           var subsUsedInGameWeek = [];
-//           var subsUsed = 0;
+          
 
 // ///where you got to yesterdayyy
 
