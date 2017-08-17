@@ -84,7 +84,7 @@ $(document).ready(function(){
                       }
                 }
 
-                if(result.automatic_subs > 0){
+                if(result.automatic_subs.length > 0){
                     var sub = result.automatic_subs.element_in;
                     var original = result.automatic_subs.element_out
 
