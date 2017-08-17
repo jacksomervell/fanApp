@@ -252,7 +252,7 @@ $(document).ready(function(){
                       var fish = $.each (playersWhoPlayedHistory, function(i, val){
 
                 //console.log(val)
-                          var playerPos = val;
+                          var playerPos = i;
                           var playerNum = thePlayers[val]
 
            
