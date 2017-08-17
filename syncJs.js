@@ -140,7 +140,9 @@ $(document).ready(function(){
     })
 
     
-  })
+  });
+
+});
 
             //now calculate how many subs points wouldve been contributed:
 
