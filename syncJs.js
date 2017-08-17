@@ -262,6 +262,7 @@ $(document).ready(function(){
                                   console.log(val)
                                 $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[1]}})
                                  .done(function(result){
+                                      console.log(i);
                                       console.log(result);
                                         var addPoints = result.history[i].total_points
                                         theSubsScoresToAdd[subScoresIndex] = addPoints;
