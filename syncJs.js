@@ -86,8 +86,6 @@ $(document).ready(function(){
          
             $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + val,}})
            .done(function(result){
-              ajaxCount = ajaxCount + 1;
-              console.log(ajaxCount);
               //add every point up for each week
 
               var thisPlayersScores = []
@@ -108,7 +106,8 @@ $(document).ready(function(){
       
           
         thePlayersTotalScores = thePlayersTotalScores.slice(0, 12);
-        console.log(thePlayers)
+        console.log(thePlayers);
+        console.log(thePlayersTotalScores);
 
          var subs = []
        
