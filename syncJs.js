@@ -109,7 +109,7 @@ $(document).ready(function(){
 
       $(document).ajaxStop(function () {
           
-        console.log(thePlayersTotalScores.slice(0, 12));
+        thePlayersTotalScores = thePlayersTotalScores.slice(0, 12);
         console.log(thePlayers);
 
          var subs = []
@@ -126,8 +126,21 @@ $(document).ready(function(){
          var subsUsedInGameWeek = [];
          var subsUsed = 0;
 
-         var fish = $.each (thePlayers)
+         var fish = $.each (thePlayers, function(i, val){
 
+            $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + val,}})
+           .done(function(result){
+
+              var playerPos = val;
+              var playerNum = thePlayers[val]
+              console.log(result);
+
+           })
+
+          //end of fish:
+         })
+
+       //end of ajaxStop:  
       })
 
     //end of click:
