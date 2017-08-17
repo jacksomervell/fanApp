@@ -7,6 +7,11 @@ var thePlayersTotalScores = [];
       var ajaxCount = 0;
       var viceCaptain;
       var captain;
+      var theSubsScoresToAdd = [];
+     var subScoresIndex = 0;
+     var subsUsedInGameWeek = [];
+     var subsUsed = 0;
+     var subs = []
 
 
 $(document).ready(function(){
@@ -107,20 +112,12 @@ $(document).ready(function(){
           $(this).unbind("ajaxStop");
           
         thePlayersTotalScores = thePlayersTotalScores.slice(0, 12);
-
-         var subs = []
        
          subs.push(thePlayers[12]);
          subs.push(thePlayers[13]);
          subs.push(thePlayers[14]);
          subs.push(thePlayers[15]);
 
-
-         var theSubsScoresToAdd = [];
-         var subScoresIndex = 0;
-
-         var subsUsedInGameWeek = [];
-         var subsUsed = 0;
 
          var playerHistory = [];
 
@@ -140,7 +137,9 @@ $(document).ready(function(){
           $(this).unbind("ajaxStop");
           console.log(playerHistory);
 
-              var fish = $.each (playerHistory, function(i, val){
+          var playersWhoPlayedHistory = playerHistory.slice(0, 12);
+
+              var fish = $.each (playersWhoPlayedHistory, function(i, val){
 
                 console.log(val)
                 var playerPos = val;
@@ -156,8 +155,6 @@ $(document).ready(function(){
 
                     $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}})
                      .done(function(result){
-
-                      console.log('4' + result);
 
                       var addPoints = val.history[i].total_points
                       theSubsScoresToAdd[subScoresIndex] = addPoints;
