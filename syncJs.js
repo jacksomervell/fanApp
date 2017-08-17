@@ -84,7 +84,7 @@ $(document).ready(function(){
             }
     }).done(function(){
 
-        $.each(thePlayers, function(i, val){
+       var fish = $.each(thePlayers, function(i, val){
 
           var scoresAddedForOnePlayer
          
