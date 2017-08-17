@@ -109,7 +109,8 @@ $(document).ready(function(){
 
       $(document).ajaxStop(function () {
           
-        console.log(thePlayersTotalScores)
+        console.log(thePlayersTotalScores.slice(0, 12));
+        console.log(thePlayers);
 
          var subs = []
        
@@ -125,6 +126,7 @@ $(document).ready(function(){
          var subsUsedInGameWeek = [];
          var subsUsed = 0;
 
+         var fish = $.each (thePlayers)
 
       })
 
