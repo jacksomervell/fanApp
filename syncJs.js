@@ -49,7 +49,7 @@ $(document).ready(function(){
       $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', 
                         data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, 
                         success: function(result){
-                          
+                          console.log(result);
                           thePlayers = [];
                           playerScores = result.picks;
                            var points = [];
@@ -282,6 +282,17 @@ $(document).ready(function(){
                       console.log('starters scores: ' + thePlayersTotalScores);
                       console.log('sub scores: ' + theSubsScoresToAdd)
                       console.log('history of players who played: ' + playersWhoPlayedHistory)
+
+                      var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
+
+
+                      var fieldedPlayersScore = thePlayersTotalScores.reduce(function(a, b) { return a + b; }, 0);
+
+                       
+                      var totalScore = subScores + fieldedPlayersScore; 
+
+                      console.log(totalScore);
+
                     });
 
             })
@@ -399,13 +410,7 @@ $(document).ready(function(){
   //     console.log(thePlayersTotalScores);
 
 
-  //     var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
-
-
-  //     var fieldedPlayersScore = thePlayersTotalScores.reduce(function(a, b) { return a + b; }, 0);
-
-       
-  //     var totalScore = subScores + fieldedPlayersScore; 
+      
 
 
   //     $('.results').append("<p>If <strong>" + teamName + "</strong> hadn't made any transfers or captain changes since day 1, their score would be <strong> "+totalScore+"</strong></p>")
