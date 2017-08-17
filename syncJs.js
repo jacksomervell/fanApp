@@ -107,7 +107,7 @@ $(document).ready(function(){
               thePlayersTotalScores.push(scoresAddedForOnePlayer);
           })
         })
-      })
+      }).done(function(){
 
       if (ajaxCount > 15) {
           
@@ -142,8 +142,8 @@ $(document).ready(function(){
          //  //end of each:
          // })
 
-       //end of ajaxStop:  
       }
+    })
 
     //end of click:
       })
