@@ -197,9 +197,6 @@ $(document).ready(function(){
    
                   for(i=0; i<val.history.length; i++){
 
-                    console.log(val.history[i].minutes);
-                    
-
                     if((val.history[i].minutes == 0)&&(playerPos == 0)){
                      (function(){
 
@@ -253,7 +250,7 @@ $(document).ready(function(){
 
                                 $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}})
                                  .done(function(result){
-                                      
+                                      console.log(result);
                                         var addPoints = result.history[i].total_points
                                         theSubsScoresToAdd[subScoresIndex] = addPoints;
                                         subScoresIndex++;
@@ -279,6 +276,7 @@ $(document).ready(function(){
 
 
                     $(document).ajaxStop(function(){
+                      $(this).unbind("ajaxStop");
                       console.log('made it');
                       console.log('subs: ' + subs)
                       console.log('starters scores: ' + thePlayersTotalScores);
