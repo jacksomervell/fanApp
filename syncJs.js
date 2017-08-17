@@ -150,25 +150,33 @@ $(document).ready(function(){
 
                   console.log(val.history[i].minutes);
 
-                if((val.history[i].minutes == 0)&&(playerNum == captain)){
-                 (function(){
+                  if((val.history[i].minutes == 0)&&(playerNum == captain)){
+                   (function(){
 
-                    $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}})
-                     .done(function(result){
+                      $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}})
+                       .done(function(result){
 
-                      var addPoints = val.history[i].total_points
-                      theSubsScoresToAdd[subScoresIndex] = addPoints;
-                      subScoresIndex++;
-                        })  
+                        var addPoints = val.history[i].total_points
+                        theSubsScoresToAdd[subScoresIndex] = addPoints;
+                        subScoresIndex++;
+                          })  
 
-                      })
-              }
-            }
+                        })
+                   }
+                 }
 
               //end of fish:
-          })
+               })
 
-        })
+              $(document).ajaxStop(function(){
+                $(this).unbind("ajaxStop");
+                console.log(playerHistory)
+                console.log(thePlayersTotalScores)
+                console.log(theSubsScoresToAdd)
+
+
+              
+              })
       
     })
 
@@ -315,49 +323,11 @@ $(document).ready(function(){
 //           })
 
 
-
-
-
-
-  
-
-
-  //    //now calculate how many subs points wouldve been contributed:
-
-  //    var subs = []
-   
-  //    subs.push(thePlayers[12]);
-  //    subs.push(thePlayers[13]);
-  //    subs.push(thePlayers[14]);
-  //    subs.push(thePlayers[15]);
-
-
-  //    var theSubsScoresToAdd = [];
-  //   var subScoresIndex = 0;
-
-  //   var subsUsedInGameWeek = [];
-  //   var subsUsed = 0;
-
-    
-
-  // //cycle through the starting 11
-
-  //     for (i=0; i < 12; i++){
-
-  //       (function(i)
-  //       {
-
-  //         
-          
-  //       })(i);  
-  //     }
-
   //     console.log(thePlayersTotalScores);
 
 
   //     var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
 
-  //      //console.log(theSubScoresToAdd);
 
   //     var fieldedPlayersScore = thePlayersTotalScores.reduce(function(a, b) { return a + b; }, 0);
 
