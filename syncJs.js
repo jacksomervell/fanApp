@@ -242,7 +242,7 @@ $(document).ready(function(){
            
                           for(i=0; i<val.history.length; i++){
 
-                            console.log(val.history[i].minutes);
+                            console.log(val);
                             
 
                             if((val.history[i].minutes == 0)&&(playerPos > 0)){
