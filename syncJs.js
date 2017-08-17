@@ -135,20 +135,20 @@ $(document).ready(function(){
 
          $(document).ajaxStop(function(){
           $(this).unbind("ajaxStop");
-          console.log(playerHistory);
+          //console.log(playerHistory);
 
           var playersWhoPlayedHistory = playerHistory.slice(0, 12);
 
               var fish = $.each (playersWhoPlayedHistory, function(i, val){
 
-                console.log(val)
+                //console.log(val)
                 var playerPos = val;
                 var playerNum = thePlayers[val]
 
  
                 for(i=0; i<val.history.length; i++){
 
-                  console.log(val.history[i].minutes);
+                  //console.log(val.history[i].minutes);
 
                   if((val.history[i].minutes == 0)&&(playerNum == captain)){
                    (function(){
