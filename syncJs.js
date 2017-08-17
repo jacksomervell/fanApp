@@ -264,7 +264,7 @@ $(document).ready(function(){
                             if((val.history[i].minutes == 0)&&(playerPos > 0)){
                              (function(){
                                   console.log(val)
-                                $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}})
+                                $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[1]}})
                                  .done(function(result){
                                       console.log(result);
                                         var addPoints = result.history[i].total_points
