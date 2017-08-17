@@ -236,6 +236,7 @@ $(document).ready(function(){
                       console.log('made it');
                       console.log('subs: ' + subs)
                       console.log('starters scores: ' + thePlayersTotalScores);
+                      console.log('sub scores: ' + theSubsScoresToAdd)
                       console.log('history of players who played: ' + playersWhoPlayedHistory)
                     })
               
