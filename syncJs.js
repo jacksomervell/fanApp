@@ -132,7 +132,7 @@ $(document).ready(function(){
            })
 
           //end of each:
-         })
+          })
 
          $(document).ajaxStop(function(){
           $(this).unbind("ajaxStop");
@@ -149,27 +149,30 @@ $(document).ready(function(){
  
                 for(i=0; i<val.history.length; i++){
 
-                  //console.log(val.history[i].minutes)
+                  //console.log(val.history[i].minutes);
+
+                  if((val.history[i].minutes == 0)&&(playerNum == captain)){
+                   (function(){
 
                       $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}})
                        .done(function(result){
 
-                          console.log(i);
-
-                              if((val.history[i].minutes == 0)&&(playerNum == captain)){
-                                var addPoints = result.history[i].total_points
-                                theSubsScoresToAdd[subScoresIndex] = addPoints;
-                                subScoresIndex++;
-                              }
+                        var addPoints = val.history[i].total_points
+                        theSubsScoresToAdd[subScoresIndex] = addPoints;
+                        subScoresIndex++;
                           })  
-                   }
-                 })
 
+                        })
+                   }
+                 }
+
+              //end of fish:
+               })
 
               $(document).ajaxStop(function(){
                 $(this).unbind("ajaxStop");
 
-                console.log('hello');
+
                 console.log(playersWhoPlayedHistory)
                 console.log(thePlayersTotalScores)
                 console.log(theSubsScoresToAdd)
