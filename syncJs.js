@@ -92,7 +92,6 @@ $(document).ready(function(){
                   }
 
                 if(result.automatic_subs.length > 0){
-                  console.log(result.automatic_subs);
                     var sub = result.automatic_subs[0].element_in;
                     var original = result.automatic_subs[0].element_out;
 
@@ -101,7 +100,6 @@ $(document).ready(function(){
 
                     thePlayers.swap(sub, original);
                   }
-                  console.log(thePlayers);
             }
     }).done(function(){
 
@@ -265,7 +263,7 @@ $(document).ready(function(){
 
                             if((val.history[i].minutes == 0)&&(playerPos > 0)){
                              (function(){
-
+                                  console.log(val)
                                 $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}})
                                  .done(function(result){
                                       console.log(result);
@@ -295,11 +293,11 @@ $(document).ready(function(){
 
                     $(document).ajaxStop(function(){
                       $(this).unbind("ajaxStop");
-                      console.log('made it');
-                      console.log('subs: ' + subs)
-                      console.log('starters scores: ' + thePlayersTotalScores);
-                      console.log('sub scores: ' + theSubsScoresToAdd)
-                      console.log('history of players who played: ' + playersWhoPlayedHistory)
+                      // console.log('made it');
+                      // console.log('subs: ' + subs)
+                      // console.log('starters scores: ' + thePlayersTotalScores);
+                      // console.log('sub scores: ' + theSubsScoresToAdd)
+                      // console.log('history of players who played: ' + playersWhoPlayedHistory)
 
                       var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
 
