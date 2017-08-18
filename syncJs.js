@@ -16,6 +16,7 @@
      var teamName;
      var playerHistory = [];
      var theKeeper = [];
+     var theKeeperHistory = [];
 
 
 function resetVars(){
@@ -36,6 +37,7 @@ function resetVars(){
       playerHistory = []
       teamName = '';
       theKeeper= [];
+      theKeeperHistory = [];
 
 }
 
@@ -184,6 +186,13 @@ $(document).ready(function(){
           //end of each:
           })
 
+         $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + theKeeper[0],}})
+           .done(function(result){
+
+                theKeeperHistory.push(result);
+
+           })
+
          $(document).ajaxStop(function(){
           $(this).unbind("ajaxStop");
           //console.log(playerHistory);
@@ -237,7 +246,7 @@ $(document).ready(function(){
                 $(this).unbind("ajaxStop");
                  //if the keeper didnt play
 
-                var fish = $.each (theKeeper, function(i, val){
+                var fish = $.each (theKeeperHistory, function(i, val){
 
                 //console.log(val.history);
 
