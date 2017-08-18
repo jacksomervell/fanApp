@@ -326,6 +326,7 @@ $(document).ready(function(){
 
                        
                       var totalScore = subScores + fieldedPlayersScore; 
+                      console.log('subscores and fieldedscores: ' + [subScores, fieldedPlayersScore]);
 
                       console.log('final score:' + totalScore);
 
