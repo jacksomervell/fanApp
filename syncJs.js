@@ -190,7 +190,7 @@ $(document).ready(function(){
  
                 for(i=0; i<val.history.length; i++){
 
-                  console.log('history: ' + val);
+                  console.log(val);
 
                   if((val.history[i].minutes == 0)&&(playerNum == captain)){
                    (function(){
