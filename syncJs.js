@@ -254,9 +254,6 @@ $(document).ready(function(){
                     //console.log(val.history[0].minutes);
                     if((val.history[i].minutes == 0)){
 
-                      console.log('byebye');
-                     (function(){
-
                         $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}})
                          .done(function(result){
                               console.log('keeper sub happened' +result)
@@ -265,13 +262,9 @@ $(document).ready(function(){
                                 subScoresIndex++;
                               
                             })  
-
-                          })
                      }
                      else {
 
-                      console.log('hello');
-                        (function(){
 
                         $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + theKeeper[0]}})
                          .done(function(result){
@@ -280,7 +273,6 @@ $(document).ready(function(){
                                 thePlayersTotalScores.push(addPoints);                            
                             })  
 
-                          })
                      }
                    }
 
