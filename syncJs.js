@@ -15,6 +15,7 @@
      var playersWhoPlayedHistory = [];
      var teamName;
      var playerHistory = [];
+     var theKeeper = [];
 
 
 function resetVars(){
@@ -34,6 +35,7 @@ function resetVars(){
       playersWhoPlayedHistory = [];
       playerHistory = []
       teamName = '';
+      theKeeper= [];
 
 }
 
@@ -134,7 +136,7 @@ $(document).ready(function(){
          subs.push(thePlayers[15]);
 
          thePlayers = thePlayers.slice(0, 12);
-         theKeeper = thePlayers[0];
+         theKeeper = theKeeper.push(thePlayers[0]);;
          thePlayers = thePlayers.slice(1,12);
 
          console.log(theKeeper);
@@ -233,18 +235,15 @@ $(document).ready(function(){
                 $(this).unbind("ajaxStop");
                  //if the keeper didnt play
 
-                var fish = $.each (playersWhoPlayedHistory, function(i, val){
+                var fish = $.each (theKeeper, function(i, val){
 
                 //console.log(val.history);
-
-                  var playerPos = i;
-                  var playerNum = thePlayers[i]
 
    
                   for(i=0; i<val.history.length; i++){
 
                     //console.log(val.history[0].minutes);
-                    if((val.history[i].minutes == 0)&&(playerPos == 0)){
+                    if((val.history[i].minutes == 0)){
                      (function(){
 
                         $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}})
@@ -254,6 +253,18 @@ $(document).ready(function(){
                                 theSubsScoresToAdd[subScoresIndex] = addPoints;
                                 subScoresIndex++;
                               
+                            })  
+
+                          })
+                     }
+                     else {
+                        (function(){
+
+                        $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + theKeeper[0]}})
+                         .done(function(result){
+                              console.log('keeper played: ' +result)
+                                var addPoints = result.history[i].total_points
+                                thePlayersTotalScores.push(addPoints);                            
                             })  
 
                           })
@@ -283,13 +294,12 @@ $(document).ready(function(){
                       var fish = $.each (playersWhoPlayedHistory, function(i, val){
 
                 //console.log(val.history)
-                          var playerPos = i;
                           var playerNum = thePlayers[val]
 
            
                           for(i=0; i<val.history.length; i++){
                               // console.log(i);
-                            if((val.history[i].minutes == 0)&&(playerPos > 0)){
+                            if(val.history[i].minutes == 0){
                                   // console.log(i)
                                 $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[1]}})
                                  .done(function(result){
