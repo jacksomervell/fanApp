@@ -231,7 +231,7 @@ $(document).ready(function(){
 
                 var fish = $.each (playersWhoPlayedHistory, function(i, val){
 
-                //console.log(val)
+                console.log(val)
                   var playerPos = i;
                   var playerNum = thePlayers[i]
 
@@ -313,11 +313,11 @@ $(document).ready(function(){
 
                     $(document).ajaxStop(function(){
                       $(this).unbind("ajaxStop");
-                      console.log('made it');
-                      console.log('subs: ' + subs)
-                      console.log('starters scores: ' + thePlayersTotalScores);
-                      console.log('sub scores: ' + theSubsScoresToAdd)
-                      console.log('players: ' + thePlayers)
+                      // console.log('made it');
+                      // console.log('subs: ' + subs)
+                      // console.log('starters scores: ' + thePlayersTotalScores);
+                      // console.log('sub scores: ' + theSubsScoresToAdd)
+                      // console.log('players: ' + thePlayers)
 
                       var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
 
