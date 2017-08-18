@@ -179,6 +179,8 @@ $(document).ready(function(){
           $(this).unbind("ajaxStop");
           //console.log(playerHistory);
 
+          console.log('player history = ' + playerHistory);
+
           playersWhoPlayedHistory = playerHistory.slice(0, 12);
 
               var fish = $.each (playersWhoPlayedHistory, function(i, val){
@@ -231,7 +233,7 @@ $(document).ready(function(){
 
                 var fish = $.each (playersWhoPlayedHistory, function(i, val){
 
-                console.log(val.history);
+                //console.log(val.history);
 
                   var playerPos = i;
                   var playerNum = thePlayers[i]
@@ -239,6 +241,7 @@ $(document).ready(function(){
    
                   for(i=0; i<val.history.length; i++){
 
+                    console.log(val.history[0].minutes);
                     if((val.history[i].minutes == 0)&&(playerPos == 0)){
                      (function(){
 
