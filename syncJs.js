@@ -304,15 +304,16 @@ $(document).ready(function(){
            
                           for(i=0; i<val.history.length; i++){
                               // console.log(i);
+                              var subNumber = 1;
                             if(val.history[i].minutes == 0){
                                   // console.log(i)
-                                $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[1]}})
+                                $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[subNumber]}})
                                  .done(function(result){
                                       console.log('subtime:' + i);
                                       console.log('sub'+ result);
                                         var addPoints = result.history[i-1].total_points
                                         theSubsScoresToAdd[subScoresIndex] = addPoints;
-                                        subScoresIndex++;
+                                        subNumber++
                                       
                                     })  
                              }
