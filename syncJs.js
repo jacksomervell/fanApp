@@ -126,6 +126,14 @@ $(document).ready(function(){
 
       console.log('before each:' + thePlayers);
 
+         subs.push(thePlayers[12]);
+         subs.push(thePlayers[13]);
+         subs.push(thePlayers[14]);
+         subs.push(thePlayers[15]);
+
+         thePlayers = thePlayers.slice(0, 12);
+
+
        var fish = $.each(thePlayers, function(i, val){
 
           var scoresAddedForOnePlayer
@@ -152,14 +160,6 @@ $(document).ready(function(){
           $(this).unbind("ajaxStop");
           
           console.log('before subs out: ' + thePlayersTotalScores);
-
-        thePlayersTotalScores = thePlayersTotalScores.slice(0, 12);
-       
-         subs.push(thePlayers[12]);
-         subs.push(thePlayers[13]);
-         subs.push(thePlayers[14]);
-         subs.push(thePlayers[15]);
-
 
          var playerHistory = [];
 
