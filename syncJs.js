@@ -248,13 +248,13 @@ $(document).ready(function(){
 
                 var fish = $.each (theKeeperHistory, function(i, val){
 
-                console.log(val.history);
-
    
                   for(i=0; i<val.history.length; i++){
 
                     //console.log(val.history[0].minutes);
                     if((val.history[i].minutes == 0)){
+
+                      console.log('byebye');
                      (function(){
 
                         $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}})
@@ -269,6 +269,8 @@ $(document).ready(function(){
                           })
                      }
                      else {
+
+                      console.log('hello');
                         (function(){
 
                         $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + theKeeper[0]}})
