@@ -124,7 +124,7 @@ $(document).ready(function(){
             }
     }).done(function(){
 
-      console.log('before each:' + thePlayers);
+      //console.log('before each:' + thePlayers);
 
          subs.push(thePlayers[12]);
          subs.push(thePlayers[13]);
@@ -159,7 +159,7 @@ $(document).ready(function(){
       $(document).ajaxStop(function(){
           $(this).unbind("ajaxStop");
           
-          console.log('before subs out: ' + thePlayersTotalScores);
+          //console.log('before subs out: ' + thePlayersTotalScores);
 
          var playerHistory = [];
 
@@ -179,9 +179,9 @@ $(document).ready(function(){
           $(this).unbind("ajaxStop");
           //console.log(playerHistory);
 
-          console.log('player history = ' + playerHistory);
+          console.log(playerHistory);
 
-          playersWhoPlayedHistory = playerHistory.slice(0, 12);
+          playersWhoPlayedHistory = playerHistory;
 
               var fish = $.each (playersWhoPlayedHistory, function(i, val){
 
