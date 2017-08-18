@@ -13,6 +13,7 @@ var thePlayersTotalScores = [];
      var subsUsed = 0;
      var subs = [];
      var playersWhoPlayedHistory;
+     var teamName;
 
 
 $(document).ready(function(){
@@ -53,7 +54,7 @@ $(document).ready(function(){
                           thePlayers = [];
                           playerScores = result.picks;
                            var points = [];
-                           var teamName = result.entry.name;
+                           teamName = result.entry.name;
                            
 
                 //set cap
@@ -303,6 +304,9 @@ $(document).ready(function(){
                       var totalScore = subScores + fieldedPlayersScore; 
 
                       console.log('final score:' + totalScore);
+
+                      $('.results').append("<p>If <strong>" + teamName + "</strong> hadn't made any transfers or captain changes since day 1, their score would be <strong> "+totalScore+"</strong></p>")
+
 
                     });
 
