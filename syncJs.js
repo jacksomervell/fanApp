@@ -134,6 +134,11 @@ $(document).ready(function(){
          subs.push(thePlayers[15]);
 
          thePlayers = thePlayers.slice(0, 12);
+         theKeeper = thePlayers[0];
+         thePlayers = thePlayers.slice(1,12);
+
+         console.log(theKeeper);
+         console.log(thePlayers);
 
 
        var fish = $.each(thePlayers, function(i, val){
@@ -184,7 +189,6 @@ $(document).ready(function(){
               var fish = $.each (playersWhoPlayedHistory, function(i, val){
 
                 //console.log(val)
-                var playerPos = val;
                 var playerNum = thePlayers[i]
 
  
