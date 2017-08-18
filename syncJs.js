@@ -4,7 +4,6 @@
       var totalScoresIndex = 0;
       var thePlayers = []
       var playerScores = [];
-      var thePlayersTotalScores = [];
       var ajaxCount = 0;
       var viceCaptain;
       var captain;
@@ -23,7 +22,6 @@ function resetVars(){
        totalScoresIndex = 0;
        thePlayers = []
        playerScores = [];
-       thePlayersTotalScores = [];
        ajaxCount = 0;
        viceCaptain;
        captain;
@@ -126,6 +124,8 @@ $(document).ready(function(){
             }
     }).done(function(){
 
+      console.log('before each:' + thePlayers);
+
        var fish = $.each(thePlayers, function(i, val){
 
           var scoresAddedForOnePlayer
@@ -151,6 +151,8 @@ $(document).ready(function(){
       $(document).ajaxStop(function(){
           $(this).unbind("ajaxStop");
           
+          console.log('before subs out: ' + thePlayersTotalScores);
+
         thePlayersTotalScores = thePlayersTotalScores.slice(0, 12);
        
          subs.push(thePlayers[12]);
