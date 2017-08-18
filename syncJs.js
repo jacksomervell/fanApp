@@ -248,7 +248,7 @@ $(document).ready(function(){
 
                 var fish = $.each (theKeeperHistory, function(i, val){
 
-                //console.log(val.history);
+                console.log(val.history);
 
    
                   for(i=0; i<val.history.length; i++){
