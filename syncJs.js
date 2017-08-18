@@ -257,7 +257,7 @@ $(document).ready(function(){
                         $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}})
                          .done(function(result){
                               console.log('keeper sub happened' +result)
-                                var addPoints = result.history[i].total_points
+                                var addPoints = result.history[i-1].total_points
                                 theSubsScoresToAdd[subScoresIndex] = addPoints;
                                 subScoresIndex++;
                               
@@ -269,7 +269,7 @@ $(document).ready(function(){
                         $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + theKeeper[0]}})
                          .done(function(result){
                               console.log('keeper played: ' +result)
-                                var addPoints = result.history[i].total_points
+                                var addPoints = result.history[i-1].total_points
                                 thePlayersTotalScores.push(addPoints);                            
                             })  
 
