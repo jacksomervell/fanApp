@@ -190,7 +190,7 @@ $(document).ready(function(){
  
                 for(i=0; i<val.history.length; i++){
 
-                  console.log('history: ' + val.history[0].minutes);
+                  console.log('history: ' + val.history[0].element);
 
                   if((val.history[i].minutes == 0)&&(playerNum == captain)){
                    (function(){
@@ -239,7 +239,7 @@ $(document).ready(function(){
    
                   for(i=0; i<val.history.length; i++){
 
-                    console.log(val.history[0].minutes);
+                    //console.log(val.history[0].minutes);
                     if((val.history[i].minutes == 0)&&(playerPos == 0)){
                      (function(){
 
@@ -278,7 +278,7 @@ $(document).ready(function(){
 
                       var fish = $.each (playersWhoPlayedHistory, function(i, val){
 
-                console.log(val.history)
+                //console.log(val.history)
                           var playerPos = i;
                           var playerNum = thePlayers[val]
 
