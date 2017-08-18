@@ -138,7 +138,7 @@ $(document).ready(function(){
          thePlayers = thePlayers.slice(0, 12);
 
          var keepy = thePlayers[0];
-         theKeeper = theKeeper.push(keepy);;
+         theKeeper.push(keepy);
          thePlayers = thePlayers.slice(1,12);
 
          console.log(theKeeper);
