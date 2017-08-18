@@ -231,7 +231,7 @@ $(document).ready(function(){
 
                 var fish = $.each (playersWhoPlayedHistory, function(i, val){
 
-                console.log(i);
+                console.log(val.history);
 
                   var playerPos = i;
                   var playerNum = thePlayers[i]
@@ -277,7 +277,7 @@ $(document).ready(function(){
 
                       var fish = $.each (playersWhoPlayedHistory, function(i, val){
 
-                console.log(i)
+                console.log(val.history)
                           var playerPos = i;
                           var playerNum = thePlayers[val]
 
