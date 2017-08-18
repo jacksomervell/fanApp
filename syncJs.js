@@ -12,8 +12,9 @@
      var subsUsedInGameWeek = [];
      var subsUsed = 0;
      var subs = [];
-     var playersWhoPlayedHistory;
+     var playersWhoPlayedHistory = [];
      var teamName;
+     var playerHistory = [];
 
 
 function resetVars(){
@@ -23,14 +24,15 @@ function resetVars(){
        thePlayers = []
        playerScores = [];
        ajaxCount = 0;
-       viceCaptain;
-       captain;
+       viceCaptain = '';
+       captain = '';
        theSubsScoresToAdd = [];
        subScoresIndex = 0;
       subsUsedInGameWeek = [];
       subsUsed = 0;
       subs = [];
-      playersWhoPlayedHistory;
+      playersWhoPlayedHistory = [];
+      playerHistory = []
       teamName = '';
 
 }
@@ -161,8 +163,6 @@ $(document).ready(function(){
           
           //console.log('before subs out: ' + thePlayersTotalScores);
 
-         var playerHistory = [];
-
          var fish = $.each (thePlayers, function(i, val){
 
             $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + val,}})
@@ -179,8 +179,6 @@ $(document).ready(function(){
           $(this).unbind("ajaxStop");
           //console.log(playerHistory);
 
-          console.log(playerHistory);
-
           playersWhoPlayedHistory = playerHistory;
 
               var fish = $.each (playersWhoPlayedHistory, function(i, val){
@@ -192,7 +190,7 @@ $(document).ready(function(){
  
                 for(i=0; i<val.history.length; i++){
 
-                  //console.log(val.history[i].minutes);
+                  console.log('history: ' + val.history[0].minutes);
 
                   if((val.history[i].minutes == 0)&&(playerNum == captain)){
                    (function(){
