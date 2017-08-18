@@ -1,5 +1,6 @@
 
-var thePlayersTotalScores = [];
+  
+      var thePlayersTotalScores = [];
       var totalScoresIndex = 0;
       var thePlayers = []
       var playerScores = [];
@@ -16,7 +17,28 @@ var thePlayersTotalScores = [];
      var teamName;
 
 
+function resetVars(){
+  
+       thePlayersTotalScores = [];
+       totalScoresIndex = 0;
+       thePlayers = []
+       playerScores = [];
+       thePlayersTotalScores = [];
+       ajaxCount = 0;
+       viceCaptain;
+       captain;
+       theSubsScoresToAdd = [];
+       subScoresIndex = 0;
+      subsUsedInGameWeek = [];
+      subsUsed = 0;
+      subs = [];
+      playersWhoPlayedHistory;
+      teamName = '';
+
+}
+
 $(document).ready(function(){
+
 
   function countInArray(array, what) {
     var count = 0;
@@ -307,6 +329,7 @@ $(document).ready(function(){
 
                       $('.results').append("<p>If <strong>" + teamName + "</strong> hadn't made any transfers or captain changes since day 1, their score would be <strong> "+totalScore+"</strong></p>")
 
+                      resetVars();
 
                     });
 
