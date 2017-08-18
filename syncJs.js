@@ -194,7 +194,7 @@ $(document).ready(function(){
                       url: '/',
                       data : { json: 'hi' },
                       success: function(data) {
-                        console.log('faked')
+                        
                       }  
                     });
 
@@ -218,7 +218,7 @@ $(document).ready(function(){
 
                         $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}})
                          .done(function(result){
-                              console.log(result)
+                              console.log('keeper sub happened' +result)
                                 var addPoints = result.history[i].total_points
                                 theSubsScoresToAdd[subScoresIndex] = addPoints;
                                 subScoresIndex++;
@@ -257,13 +257,13 @@ $(document).ready(function(){
 
            
                           for(i=0; i<val.history.length; i++){
-                              console.log(i);
+                              // console.log(i);
                             if((val.history[i].minutes == 0)&&(playerPos > 0)){
-                                  console.log(i)
+                                  // console.log(i)
                                 $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[1]}})
                                  .done(function(result){
-                                      console.log(i);
-                                      console.log(result);
+                                      console.log('subtime:' + i);
+                                      console.log('sub'+ result);
                                         var addPoints = result.history[i-1].total_points
                                         theSubsScoresToAdd[subScoresIndex] = addPoints;
                                         subScoresIndex++;
@@ -302,7 +302,7 @@ $(document).ready(function(){
                        
                       var totalScore = subScores + fieldedPlayersScore; 
 
-                      console.log(totalScore);
+                      console.log('final score:' + totalScore);
 
                     });
 
