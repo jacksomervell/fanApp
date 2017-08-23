@@ -65,11 +65,13 @@ $(document).ready(function(){
   
 
   $(".what-if").click(function(){
+      $(this).attr("disabled", true);
   
       var teamId = $('.team-id').val()
 
       if(teamId == ""){
         $('.warning').slideDown();
+        $(this).attr("disabled", false);
         return;
       }
 
@@ -355,6 +357,8 @@ $(document).ready(function(){
                       $('.results').append("<p>If <strong>" + teamName + "</strong> hadn't made any transfers or captain changes since day 1, their score would be <strong> "+totalScore+"</strong></p>")
 
                       resetVars();
+
+                      $(".what-if").attr("disabled", false);
 
                     });
 
