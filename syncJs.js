@@ -18,6 +18,9 @@
      var theKeeper = [];
      var theKeeperHistory = [];
 
+     var url = 'http://whatiff.herokuapp.com/proxy.php';
+     //var url = 'http://www.game-change.co.uk/proxy.php';
+
 
 function resetVars(){
   
@@ -54,18 +57,13 @@ $(document).ready(function(){
     return count;
   }
 
-// $.ajaxPrefilter( function (options) {
-//   if (options.crossDomain && jQuery.support.cors) {
-//     var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
-//     options.url = http + '//cors-anywhere.herokuapp.com/' + options.url;
-//     //options.url = "http://cors.corsproxy.io/url=" + options.url;
-//   }
-// });
-
   
 
   $(".what-if").click(function(){
+
+      
       $(this).attr("disabled", true);
+
   
       var teamId = $('.team-id').val()
 
@@ -75,7 +73,7 @@ $(document).ready(function(){
         return;
       }
 
-      $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', 
+      $.ajax({url:url, 
                         data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, 
                         success: function(result){
 
@@ -153,7 +151,7 @@ $(document).ready(function(){
 
           var scoresAddedForOnePlayer
          
-            $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + val,}})
+            $.ajax({url:url, data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + val,}})
            .done(function(result){
               //add every point up for each week
 
@@ -178,7 +176,7 @@ $(document).ready(function(){
 
          var fish = $.each (thePlayers, function(i, val){
 
-            $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + val,}})
+            $.ajax({url:url, data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + val,}})
            .done(function(result){
 
                 playerHistory.push(result);
@@ -188,7 +186,7 @@ $(document).ready(function(){
           //end of each:
           })
 
-         $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + theKeeper[0],}})
+         $.ajax({url:url, data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + theKeeper[0],}})
            .done(function(result){
 
                 theKeeperHistory.push(result);
@@ -214,7 +212,7 @@ $(document).ready(function(){
                   if((val.history[i].minutes == 0)&&(playerNum == captain)){
                    (function(){
 
-                      $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}})
+                      $.ajax({url:url, data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + viceCaptain}})
                        .done(function(result){
                             
                               var addPoints = result.history[i].total_points
@@ -256,7 +254,7 @@ $(document).ready(function(){
                     //console.log(val.history[0].minutes);
                     if((val.history[i].minutes == 0)){
 
-                        $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}})
+                        $.ajax({url:url, data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[0]}})
                          .done(function(result){
                               console.log('keeper sub happened' +result)
                                 var addPoints = result.history[i-1].total_points
@@ -268,7 +266,7 @@ $(document).ready(function(){
                      else {
 
 
-                        $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + theKeeper[0]}})
+                        $.ajax({url:url, data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + theKeeper[0]}})
                          .done(function(result){
                               console.log('keeper played: ' +result)
                                 var addPoints = result.history[i-1].total_points
@@ -309,7 +307,7 @@ $(document).ready(function(){
                               var subNumber = 1;
                             if(val.history[i].minutes == 0){
                                   // console.log(i)
-                                $.ajax({url:'http://whatiff.herokuapp.com/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[subNumber]}})
+                                $.ajax({url:url, data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[subNumber]}})
                                  .done(function(result){
                                       console.log('subtime:' + i);
                                       console.log('sub'+ result);
@@ -354,10 +352,9 @@ $(document).ready(function(){
 
                       console.log('final score:' + totalScore);
 
-                      $('.results').append("<p>If <strong>" + teamName + "</strong> hadn't made any transfers or captain changes since day 1, their score would be <strong> "+totalScore+"</strong></p>")
+                      $('.results').append("<p>If <strong>" + teamName + "</strong> hadn't made any transfers, line-up changes or captain changes since day 1, their score would be <strong> "+totalScore+"</strong></p>")
 
                       resetVars();
-
                       $(".what-if").attr("disabled", false);
 
                     });
@@ -378,116 +375,7 @@ $(document).ready(function(){
 });
 
 
-              
-
-//               //these are for if subs have been used. If this sub is used, add it to the array. Checks the array each time loops.
-              
-
-              
-//             
-//           //calc for outfield
-//                   if (playerPos > 0){
-//                     (function(){
-
-//                     $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[1]}, async:false})
-//                      .done(function(result){
-//                         console.log('6' + result);
-//                         if(!result.history[i]){
-//                         return;
-//                         }
-
-//                         if ((result.history[i].minutes == 0) || (countInArray(subsUsedInGameWeek, (subs[1] + i)) > 0)){
-//                             (function(){
-
-//                               $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[2]}, async:false})
-//                               .done(function(result){
-//                                 console.log('7' + result);
-//                                 if(!result.history[i]){
-//                                   return;
-//                                   }
-
-//                                 if ((result.history[i].minutes == 0) || (countInArray(subsUsedInGameWeek, (subs[2] + i)) > 0)){
-//                                   (function(){
-
-//                                     $.ajax({url:'/proxy.php', data:{csurl: "https://fantasy.premierleague.com/drf/element-summary/" + subs[3]}, async:false})
-//                                     .done(function(result){
-//                                       console.log('8' + result);
-//                                       if(!result.history[i]){
-//                                         return;
-//                                         }
-
-//                                       if(countInArray(subsUsedInGameWeek, (subs[3] + i)) > 0){return}
-
-//                                       subsUsedInGameWeek[subsUsed] = (subs[3] + i);
-//                                       subsUsed++
-                                      
-                                      
-//                                       // if(countInArray(gameWeeksWithSubs, i) > 2){ return}
-//                                       var addPoints = result.history[i].total_points
-//                                       theSubsScoresToAdd[subScoresIndex] = addPoints;
-//                                       subScoresIndex++;
-                                        
-                                      
-                                      
-//                                     })
-//                                   })()
-//                                 }
-//                                 else{
-
-//                                   subsUsedInGameWeek[subsUsed] = (subs[2] + i);
-//                                   subsUsed++
-                                  
-                                  
-//                                   // if(countInArray(gameWeeksWithSubs, i) > 2){ return}
-//                                   var addPoints = result.history[i].total_points
-//                                   theSubsScoresToAdd[subScoresIndex] = addPoints;
-//                                   subScoresIndex++;
-
-                                
-//                                 }
-//                               })
-//                             })()
-//                         }
-//                         else{
+               
 
 
-//                           subsUsedInGameWeek[subsUsed] = (subs[1] + i);
-//                           subsUsed++
-                          
-                          
-//                           // if(countInArray(gameWeeksWithSubs, i) > 1){ return}
-
-//                           var addPoints = result.history[i].total_points
-//                           theSubsScoresToAdd[subScoresIndex] = addPoints;
-//                           subScoresIndex++;
-
-//                         }
-                     
-                            
-//                       })  
-
-//                     })()
-//                   }
-//                 }
-//               }
-
-//           })
-
-
-  //     console.log(thePlayersTotalScores);
-
-
-      
-
-
-  //     $('.results').append("<p>If <strong>" + teamName + "</strong> hadn't made any transfers or captain changes since day 1, their score would be <strong> "+totalScore+"</strong></p>")
-
-  //     }, complete: function(){
-  //      // $('.ajax-loader').css("visibility", "hidden");
-  //     }
-
-  //   });
-
-
-  // }); 
 
