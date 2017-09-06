@@ -57,6 +57,87 @@ $(document).ready(function(){
     return count;
   }
 
+  $('.captain-if').click(function(){
+
+    var teamId = $('.captain-team-id').val();
+    var limit;
+    var allPoints = [];
+    var limitArray = [];
+    var teamName;
+
+     $.ajax({url:url, 
+              data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, 
+              success: function(result){
+
+//get array of every gameweek
+              limit = result.entry.current_event;
+              teamName = result.entry.name;
+
+              var lowend = 1
+              var highend = limit;
+
+              for (var i = lowend; i <= highend; i++) {
+                limitArray.push(i);
+              }
+             }
+    }).done(function(){
+
+      var fish = $.each(limitArray, function(i, val){
+
+          $.ajax({url:url, 
+                  data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/" + val}, 
+                  success: function(result){
+                    console.log(result)
+                    
+                    var limit = result.entry.current_event;
+
+                    cPlayers = result.picks
+                    var points = [];
+
+                    if(result.automatic_subs.length > 0){
+                        var sub = result.automatic_subs[0].element_in;
+                        var original = result.automatic_subs[0].element_out;
+
+                        sub = cPlayers.indexOf(sub);
+                        original = cPlayers.indexOf(original);
+
+                        cPlayers.swap(sub, original);
+                      }
+
+                    for (i=0; i<11; i++){
+                      points.push(cPlayers[i].points)                
+                    }
+
+                    //find highest scorer and double him
+
+                    var largest = Math.max.apply(Math, points);
+
+                    points.push(largest);
+
+                    var points = points.reduce(add, 0);
+
+                    function add(a, b) {
+                        return a + b;
+                    }
+
+                    allPoints.push(points);
+
+                  }
+            })
+       })
+
+    })
+
+    $(document).ajaxStop(function(){
+          $(this).unbind("ajaxStop");
+
+          allPoints = allPoints.reduce(function(a, b) { return a + b; }, 0);
+
+          console.log(allPoints);
+          $('.captain-results').append("<p>If <strong>" + teamName + "</strong> had picked their best captain choice every week, their current score would be <strong>" + allPoints + "</srong>");
+    })
+  })
+
   
 
   $(".what-if").click(function(){
