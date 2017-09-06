@@ -94,6 +94,14 @@ $(document).ready(function(){
                     cPlayers = result.picks
                     var points = [];
 
+                      Array.prototype.swap = function (x,y) {
+                        var b = this[x];
+                        this[x] = this[y];
+                        this[y] = b;
+                        return this;
+                      }
+
+
                     if(result.automatic_subs.length > 0){
                         var sub = result.automatic_subs[0].element_in;
                         var original = result.automatic_subs[0].element_out;
