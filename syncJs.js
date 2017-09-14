@@ -163,13 +163,13 @@ $(document).ready(function(){
       }
 
       $.ajax({url:url, 
-                        data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, 
+                        data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1/points"}, 
                         success: function(result){
 
                           thePlayers = [];
                           playerScores = result.picks;
                            var points = [];
-                           teamName = result.entry.name;
+                           // teamName = result.entry.name;
                            
 
                 //set cap
