@@ -163,8 +163,9 @@ $(document).ready(function(){
       }
 
       $.ajax({url:url, 
-                        data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1/points"}, 
+                        data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1/picks"}, 
                         success: function(result){
+                          console.log(result);
 
                           thePlayers = [];
                           playerScores = result.picks;
