@@ -425,29 +425,44 @@ $(document).ready(function(){
 
                     $(document).ajaxStop(function(){
                       $(this).unbind("ajaxStop");
-                      // console.log('made it');
-                      // console.log('subs: ' + subs)
-                      // console.log('starters scores: ' + thePlayersTotalScores);
-                      // console.log('sub scores: ' + theSubsScoresToAdd)
-                      // console.log('players: ' + thePlayers)
 
-                      var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
+                      //set the teamname
+
+                      $.ajax({url:url, data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId}})
+                                 .done(function(result){
+                                      teamName = result.entry.name;
+                                      console.log(teamName);
+                                    })  
 
 
-                      var fieldedPlayersScore = thePlayersTotalScores.reduce(function(a, b) { return a + b; }, 0);
 
-                       
-                      var totalScore = subScores + fieldedPlayersScore; 
-                      console.log('subscores and fieldedscores: ' + [subScores, fieldedPlayersScore]);
+                      $(document).ajaxStop(function(){
+                        $(this).unbind("ajaxStop");
+                        // console.log('made it');
+                        // console.log('subs: ' + subs)
+                        // console.log('starters scores: ' + thePlayersTotalScores);
+                        // console.log('sub scores: ' + theSubsScoresToAdd)
+                        // console.log('players: ' + thePlayers)
 
-                      console.log('final score:' + totalScore);
+                        var subScores = theSubsScoresToAdd.reduce(function(a, b) { return a + b; }, 0);
 
-                      $('.results').append("<p>If <strong>" + teamName + "</strong> hadn't made any transfers, line-up changes or captain changes since day 1, their score would be <strong> "+totalScore+"</strong></p>")
 
-                      resetVars();
-                      $(".what-if").attr("disabled", false);
+                        var fieldedPlayersScore = thePlayersTotalScores.reduce(function(a, b) { return a + b; }, 0);
 
-                    });
+                         
+                        var totalScore = subScores + fieldedPlayersScore; 
+                        console.log('subscores and fieldedscores: ' + [subScores, fieldedPlayersScore]);
+
+                        console.log('final score:' + totalScore);
+
+                        $('.results').append("<p>If <strong>" + teamName + "</strong> hadn't made any transfers, line-up changes or captain changes since day 1, their score would be <strong> "+totalScore+"</strong></p>")
+
+                        resetVars();
+                        $(".what-if").attr("disabled", false);
+
+                      });
+                    })
+
 
             })
               
