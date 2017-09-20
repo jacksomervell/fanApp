@@ -66,12 +66,11 @@ $(document).ready(function(){
     var teamName;
 
      $.ajax({url:url, 
-              data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/1"}, 
+              data:{csurl: "https://fantasy.premierleague.com/drf/bootstrap-static"}, 
               success: function(result){
-
 //get array of every gameweek
-              limit = result.entry.current_event;
-              teamName = result.entry.name;
+              limit = result.current_event;
+              
 
               var lowend = 1
               var highend = limit;
@@ -85,11 +84,11 @@ $(document).ready(function(){
       var fish = $.each(limitArray, function(i, val){
 
           $.ajax({url:url, 
-                  data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/" + val}, 
+                  data:{csurl: "https://fantasy.premierleague.com/drf/entry/" + teamId + "/event/" + val +'/picks'}, 
                   success: function(result){
                     console.log(result)
                     
-                    var limit = result.entry.current_event;
+                    teamName = 'hello'
 
                     cPlayers = result.picks
                     var points = [];
