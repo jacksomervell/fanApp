@@ -69,16 +69,20 @@ $(document).ready(function(){
               data:{csurl: "https://fantasy.premierleague.com/drf/bootstrap-static"}, 
               success: function(result){
 //get array of every gameweek
-              limit = result.current_event;
-              
+              limit = result.current-event;
 
+              console.log(result.current-event);
+              
               var lowend = 1
               var highend = limit;
 
               for (var i = lowend; i <= highend; i++) {
                 limitArray.push(i);
               }
+              console.log(limitArray);
              }
+
+
     }).done(function(){
 
       var fish = $.each(limitArray, function(i, val){
