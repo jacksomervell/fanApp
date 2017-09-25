@@ -69,7 +69,7 @@ $(document).ready(function(){
               data:{csurl: "https://fantasy.premierleague.com/drf/bootstrap-static"}, 
               success: function(result){
 //get array of every gameweek
-              limit = result.current-event;
+              limit = 6
 
               console.log(result);
 
