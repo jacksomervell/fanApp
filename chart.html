@@ -1,0 +1,157 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title></title>
+        <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+     <script>
+     google.charts.load('current', {packages: ['corechart']});
+      google.charts.setOnLoadCallback(drawCurveTypes);
+
+      function drawCurveTypes() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'Reece');
+      data.addColumn('number', 'Jack');
+
+      data.addRows([
+        [0, 0, 0],    [1, 10, 5],   [2, 23, 15],  [3, 17, 9],   [4, 18, 10],  [5, 9, 5],
+        [6, 11, 3],   [7, 27, 19],  [8, 33, 25],  [9, 40, 32],  [10, 32, 24], [11, 35, 27],
+        [12, 30, 22], [13, 40, 32], [14, 42, 34], [15, 47, 39], [16, 44, 36], [17, 48, 40],
+        [18, 52, 44], [19, 54, 46], [20, 42, 34], [21, 55, 47], [22, 56, 48], [23, 57, 49],
+        [24, 60, 52], [25, 50, 42], [26, 52, 44], [27, 51, 43], [28, 49, 41], [29, 53, 45],
+        [30, 55, 47], [31, 60, 52], [32, 61, 53], [33, 59, 51], [34, 62, 54], [35, 65, 57],
+        [36, 62, 54], [37, 58, 50], [38, 55, 47], [39, 61, 53], [40, 64, 56], [41, 65, 57],
+        [42, 63, 55], [43, 66, 58], [44, 67, 59], [45, 69, 61], [46, 69, 61], [47, 70, 62],
+        [48, 72, 64], [49, 68, 60], [50, 66, 58], [51, 65, 57], [52, 67, 59], [53, 70, 62],
+        [54, 71, 63], [55, 72, 64], [56, 73, 65], [57, 75, 67], [58, 70, 62], [59, 68, 60],
+        [60, 64, 56], [61, 60, 52], [62, 65, 57], [63, 67, 59], [64, 68, 60], [65, 69, 61],
+        [66, 70, 62], [67, 72, 64], [68, 75, 67], [69, 80, 72]
+      ]);
+
+      var options = {
+        hAxis: {
+          title: 'Weeks'
+        },
+        vAxis: {
+          title: 'Score'
+        },
+        series: {
+          1: {curveType: 'function'}
+        }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+    </script>
+  </head>
+  <body>
+      <div id="chart_div"></div> 
+      <div id="player_chart_div"></div> 
+      <button id="getLeagueData">Get data</button> 
+  </body>
+  </html>
+
+<script>
+
+
+$('#getLeagueData').on('click', function(){
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawPlayerChart);
+
+
+  function drawPlayerChart() {
+    var playerChart = new google.visualization.DataTable();
+
+     var options = {
+          hAxis: {
+            title: 'Gameweeks'
+          },
+          vAxis: {
+            title: 'Score'
+          },
+          series: {
+            1: {curveType: 'function'}
+          }
+        };
+
+    var gw1 = [1];
+    var gw2 = [2];
+    var gw3 = [3];
+    var gw4 = [4];
+    var gw5 = [5];
+    var gw6 = [6];
+    var gw7 = [7];
+    var gw8 = [8];
+    var gw9 = [9];
+    var gw10 = [10];
+    var gw11= [11];
+    var gw12 = [12];
+    var gw13 = [13];
+    var gw14 = [14];
+    var gw15 = [15];
+    var gw16 = [16];
+    var gw17 = [17];
+    var gw18 = [18];
+    var gw19 = [19];
+    var gw20 = [20];
+    var gw21 = [21];
+    var gw22 = [22];
+    var gw23 = [23];
+    var gw24 = [24];
+    var gw25 = [25];
+    var gw26 = [26];
+    var gw27 = [27];
+    var gw28 = [28];
+    var gw29 = [29];
+    var gw30 = [30];
+    var gw31 = [31];
+    var gw32 = [32];
+    var gw33 = [33];
+    var gw34 = [34];
+    var gw35 = [35];
+    var gw36 = [36];
+    var gw37 = [37];
+    var gw38 = [38];
+
+
+      $.ajax({
+        url:'https://fantasy.premierleague.com/drf/leagues-classic-standings/60892?phase=1', 
+        success:function(data){
+
+          //build the chart Y axes
+          playerChart.addColumn('number', 'X');
+          var players = data.standings.results;
+          players.forEach(function(player){
+            playerChart.addColumn('number', player.player_name)
+            gw1.push(player.rank);
+          })
+        }
+      })
+
+      $(document).ajaxStop(function(){
+            $(this).unbind("ajaxStop");
+            console.log(gw1);
+            playerChart.addRows([gw1])
+            var chart = new google.visualization.LineChart(document.getElementById('player_chart_div'));
+            chart.draw(playerChart, options);
+      })
+
+      
+    } 
+
+  //the click
+})
+
+
+</script>
+
+
+  
+
+  

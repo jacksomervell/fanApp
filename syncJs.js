@@ -71,9 +71,9 @@ $(document).ready(function(){
 //get array of every gameweek
               limit = 6
 
-              console.log(result);
+              console.log(result.last-entry-event);
 
-              //console.log(result.current-event);
+              //console.log(result.);
               
               var lowend = 1
               var highend = limit;
