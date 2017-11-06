@@ -33,6 +33,7 @@ $('#getLeagueData').on('click', function(){
 
   function drawPlayerChart() {
     var playerChart = new google.visualization.DataTable();
+    var leagueLength = 0;
 
      var options = {
           hAxis: {
@@ -53,6 +54,7 @@ $('#getLeagueData').on('click', function(){
 
         };
 
+
     var gw1 = ['Week 1'];
     var gw2 = ['Week 2'];
     var gw3 = ['3'];
@@ -63,34 +65,34 @@ $('#getLeagueData').on('click', function(){
     var gw8 = ['8'];
     var gw9 = ['9'];
     var gw10 = ['10'];
-    var gw11= [11];
-    var gw12 = [12];
-    var gw13 = [13];
-    var gw14 = [14];
-    var gw15 = [15];
-    var gw16 = [16];
-    var gw17 = [17];
-    var gw18 = [18];
-    var gw19 = [19];
-    var gw20 = [20];
-    var gw21 = [21];
-    var gw22 = [22];
-    var gw23 = [23];
-    var gw24 = [24];
-    var gw25 = [25];
-    var gw26 = [26];
-    var gw27 = [27];
-    var gw28 = [28];
-    var gw29 = [29];
-    var gw30 = [30];
-    var gw31 = [31];
-    var gw32 = [32];
-    var gw33 = [33];
-    var gw34 = [34];
-    var gw35 = [35];
-    var gw36 = [36];
-    var gw37 = [37];
-    var gw38 = [38];
+    var gw11= ['11'];
+    var gw12 = ['12'];
+    var gw13 = ['13'];
+    var gw14 = ['14'];
+    var gw15 = ['15'];
+    var gw16 = ['16'];
+    var gw17 = ['17'];
+    var gw18 = ['18'];
+    var gw19 = ['19'];
+    var gw20 = ['20'];
+    var gw21 = ['21'];
+    var gw22 = ['22'];
+    var gw23 = ['23'];
+    var gw24 = ['24'];
+    var gw25 = ['25'];
+    var gw26 = ['26'];
+    var gw27 = ['27'];
+    var gw28 = ['28'];
+    var gw29 = ['29'];
+    var gw30 = ['30'];
+    var gw31 = ['31'];
+    var gw32 = ['32'];
+    var gw33 = ['33'];
+    var gw34 = ['34'];
+    var gw35 = ['35'];
+    var gw36 = ['36'];
+    var gw37 = ['37'];
+    var gw38 = ['38'];
 
     var playerIds = [];
 
@@ -110,14 +112,14 @@ $('#getLeagueData').on('click', function(){
       }).done(function(){
 
             $(this).unbind("ajaxStop");
-            console.log(playerIds);
+            leagueLength = playerIds.length;
+            console.log(leagueLength);
 
             var fish = $.each(playerIds, function(i, val){
 
               $.ajax({
                   url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/1/picks', 
                   success:function(data){
-                    console.log(data);
                     points = data.entry_history.total_points;
                     gw1.push(points)
                     }
@@ -125,7 +127,6 @@ $('#getLeagueData').on('click', function(){
               $.ajax({
                   url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/2/picks', 
                   success:function(data){
-                    console.log(data);
                     points = data.entry_history.total_points;
                     gw2.push(points)
                     }
@@ -133,7 +134,6 @@ $('#getLeagueData').on('click', function(){
               $.ajax({
                   url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/3/picks', 
                   success:function(data){
-                    console.log(data);
                     points = data.entry_history.total_points;
                     gw3.push(points)
                     }
@@ -141,7 +141,6 @@ $('#getLeagueData').on('click', function(){
               $.ajax({
                   url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/4/picks', 
                   success:function(data){
-                    console.log(data);
                     points = data.entry_history.total_points;
                     gw4.push(points)
                     }
@@ -149,7 +148,6 @@ $('#getLeagueData').on('click', function(){
               $.ajax({
                   url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/5/picks', 
                   success:function(data){
-                    console.log(data);
                     points = data.entry_history.total_points;
                     gw5.push(points)
                     }
@@ -157,7 +155,6 @@ $('#getLeagueData').on('click', function(){
               $.ajax({
                   url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/6/picks', 
                   success:function(data){
-                    console.log(data);
                     points = data.entry_history.total_points;
                     gw6.push(points)
                     }
@@ -165,7 +162,6 @@ $('#getLeagueData').on('click', function(){
               $.ajax({
                   url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/7/picks', 
                   success:function(data){
-                    console.log(data);
                     points = data.entry_history.total_points;
                     gw7.push(points)
                     }
@@ -173,7 +169,6 @@ $('#getLeagueData').on('click', function(){
               $.ajax({
                   url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/8/picks', 
                   success:function(data){
-                    console.log(data);
                     points = data.entry_history.total_points;
                     gw8.push(points)
                     }
@@ -181,7 +176,6 @@ $('#getLeagueData').on('click', function(){
               $.ajax({
                   url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/9/picks', 
                   success:function(data){
-                    console.log(data);
                     points = data.entry_history.total_points;
                     gw9.push(points)
                     }
@@ -189,11 +183,207 @@ $('#getLeagueData').on('click', function(){
               $.ajax({
                   url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/10/picks', 
                   success:function(data){
-                    console.log(data);
                     points = data.entry_history.total_points;
                     gw10.push(points)
                     }
                   })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/11/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw11.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/12/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw12.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/13/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw13.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/14/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw14.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/15/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw15.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/16/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw16.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/17/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw17.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/18/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw18.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/19/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw19.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/20/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw20.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/21/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw21.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/22/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw22.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/23/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw23.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/24/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw24.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/25/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw25.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/26/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw26.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/27/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw27.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/28/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw28.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/29/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw29.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/30/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw30.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/31/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw31.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/32/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw32.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/33/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw33.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/34/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw34.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/35/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw35.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/36/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw36.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/37/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw37.push(points)
+                    }
+                  })
+              $.ajax({
+                  url:'https://fantasy.premierleague.com/drf/entry/'+val+'/event/38/picks', 
+                  success:function(data){
+                    points = data.entry_history.total_points;
+                    gw38.push(points)
+                    }
+                  })
+
             })
             
           
@@ -202,19 +392,20 @@ $('#getLeagueData').on('click', function(){
       $(document).ajaxStop(function(){
             $(this).unbind("ajaxStop");
 
-              // gw2 = cumulateArrays(gw1, gw2);
-              // gw3 = cumulateArrays(gw2, gw3);
-              // gw4 = cumulateArrays(gw3, gw4);
-              // gw5 = cumulateArrays(gw4, gw5);
-              // gw6 = cumulateArrays(gw5, gw6);
-              // gw7 = cumulateArrays(gw6, gw7);
-              // gw8 = cumulateArrays(gw7, gw8);
-              // gw9 = cumulateArrays(gw8, gw9);
-              // gw10 = cumulateArrays(gw9, gw10);
+              useThese = [];
+              allWeeks = [gw1, gw2, gw3, gw4, gw5, gw6, gw7, gw8, gw9, gw10, gw11, gw12, gw13, gw14, gw15, gw16, gw17, gw18, 
+                          gw19, gw20, gw21, gw22, gw23, gw24, gw25, gw26, gw27, gw28, gw29, gw30, gw31, gw32, gw33, gw34, gw35,
+                          gw36, gw37, gw38];
 
-              console.log([gw1, gw2, gw3, gw4, gw5, gw6, gw7, gw8, gw9, gw10])
+              for (i=0;i<allWeeks.length;i++){
+                if (allWeeks[i].length == leagueLength+1){
+                  useThese.push(allWeeks[i]);
+                }
+              }
 
-              playerChart.addRows([gw1, gw2, gw3, gw4, gw5, gw6, gw7, gw8, gw9, gw10])
+              console.log(useThese);
+
+              playerChart.addRows(useThese);
               var chart = new google.visualization.LineChart(document.getElementById('player_chart_div'));
               chart.draw(playerChart, options);
             })
@@ -225,11 +416,6 @@ $('#getLeagueData').on('click', function(){
 
   //the click
 })
-
-function cumulateArrays(array1, array2){
-  var sum = array1.map((a, i) => a + array2[i]);
-  return sum;
-}
 
 </script>
 
