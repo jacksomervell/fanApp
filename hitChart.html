@@ -1,0 +1,115 @@
+<style>
+    #player_chart_div svg g g g g rect { stroke-width:0px; fill:red; }<br />    </style>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="jquery.ajax-cross-origin.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<div style="margin-top:10px; text-align:center" >
+<button id="getPointHits">Get data</button>
+<input id="pointLeagueId" type="text" />
+<div>
+
+<div id="points_hit_chart_div"></div>
+
+
+<script>
+
+
+$('#getPointHits').on('click', function(){
+    var leagueId = $('#pointLeagueId').val()
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawVisualization);
+
+
+
+     function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+
+    var options = {
+      title : 'FPl Hits-to-points ratio',
+      vAxes: {0: {title: 'Points', logScale: false},
+            1: {title: 'Hits',logScale: false, maxValue: 50}},
+      hAxis: {title: 'Players'},
+      seriesType: 'bars',
+      series: {0: {type: 'bar'},
+                1: {type: 'line', targetAxisIndex:1}},
+      'width':'100%',
+          'height':800,
+          lineWidth: 1,
+          legend: { textStyle: {fontSize: 12},
+            cursor: 'pointer',
+          },
+          'curveType': 'function',
+          'pointSize': 7,
+          'crosshair': {
+            trigger: 'none'
+          }
+                
+    };
+
+    var playerIds = [];
+
+    var playerRow = [];
+
+    var leagueId = 60892;
+
+    $.ajax({
+        url:'https://fantasy.premierleague.com/drf/leagues-classic-standings/' + leagueId, 
+        success:function(data){
+
+          var players = data.standings.results;
+          players.forEach(function(player){
+            playerIds.push(player.entry);
+          })
+        }
+      }).done(function(){
+
+         $(this).unbind("ajaxStop");
+
+         var fish = $.each(playerIds, function(i, val){
+
+            $.ajax({
+               url:'https://fantasy.premierleague.com/drf/entry/' + val, 
+                  success:function(data){
+                  playerRow.push([data.entry.name,data.entry.summary_overall_points, data.entry.total_transfers]);
+                  }
+            })
+
+          })
+        
+      })
+
+      $(document).ajaxStop(function(){
+            $(this).unbind("ajaxStop");
+
+          function Comparator(a, b) {
+             if (a[1] < b[1]) return -1;
+             if (a[1] > b[1]) return 1;
+             return 0;
+           }
+
+           playerRow = playerRow.sort(Comparator);
+           console.log(playerRow);
+
+
+        //make the actual table
+        playerRow.unshift(['Player','Score','Hits']);
+        console.log(playerRow);
+        var playerData = new google.visualization.arrayToDataTable(
+         playerRow
+        );
+
+        var chart = new google.visualization.ComboChart(document.getElementById('points_hit_chart_div'));
+        chart.draw(playerData, options);
+      
+      })
+
+
+  }
+  //the click
+})
+
+</script>
